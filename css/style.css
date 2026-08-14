@@ -389,6 +389,64 @@ h1, h2, h3 {
   color: var(--text);
 }
 
+.swatch {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  margin-right: 8px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.icon-swatch {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.big-swatch {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.canon-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.canon-badge.canon {
+  color: #7fe08a;
+  border-color: #2f5a34;
+  background: rgba(127, 224, 138, 0.08);
+}
+.canon-badge.noncanon {
+  color: #b497d6;
+  border-color: #4a3a5c;
+  background: rgba(180, 151, 214, 0.08);
+}
+
+.diff-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+.diff-hero h1 {
+  margin: 0;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

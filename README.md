@@ -11,10 +11,26 @@ checkpoint-wiki/
 │   └── style.css           ← shared styles + per-game color themes
 ├── games/
 │   ├── geometry-dash.html
-│   ├── tower-of-hell.html
-│   └── blox-fruits.html
+│   ├── tower-of-hell.html  ← has the difficulty chart table (image-style)
+│   ├── blox-fruits.html
+│   └── toh/                ← one page per Eternal Towers of Hell difficulty tier
+│       ├── easy.html
+│       ├── medium.html
+│       ├── hard.html
+│       ├── difficult.html
+│       ├── challenging.html
+│       ├── intense.html
+│       ├── remorseless.html
+│       ├── insane.html
+│       ├── extreme.html
+│       ├── terrifying.html
+│       ├── catastrophic.html
+│       ├── horrific.html
+│       └── unreal.html
 └── README.md
 ```
+
+Each `games/toh/*.html` page shows that tier's baseline tower and a sampled table of towers spanning the full range (bottom to peak), plus prev/next links to browse between tiers. They're two folders deep, so they link back with `../tower-of-hell.html` and `../../index.html`, and pull the stylesheet from `../../css/style.css`.
 
 ## Putting it on GitHub Pages
 
