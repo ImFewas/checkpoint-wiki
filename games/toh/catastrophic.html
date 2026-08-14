@@ -48,30 +48,32 @@
 
   <section class="section" id="towers">
     <h2>Towers in this tier <span class="tag">14 tracked</span></h2>
-    <p>A spread of catastrophic towers sampled from bottom to peak of the range, so you can see how the tier actually progresses rather than just its edges.</p>
-    <table>
-      <thead>
-        <tr><th>Tower</th><th>Area</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Tower of Inferno Galore (deconfirmed) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToIG)</span></td><td>Ring 9</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Sadistically Terrifying Overachieving Neglectful Enragement Facility (deconfirmed) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(S.T.O.N.E. Facility)</span></td><td>Ring 9</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Augmented Misery <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToAM)</span></td><td>Ring 9</td><td style="font-family:var(--font-mono);">11.00</td></tr>
-        <tr><td>Tower of Vindictive Maneuvers <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToVM)</span></td><td>Pit of Misery</td><td style="font-family:var(--font-mono);">11.04</td></tr>
-        <tr><td>Tower of Generation Failure <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToGF)</span></td><td>Ring 8</td><td style="font-family:var(--font-mono);">11.17</td></tr>
-        <tr><td>Tower of Descent Into Exile <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToDIE)</span></td><td>Zone 8</td><td style="font-family:var(--font-mono);">11.36</td></tr>
-        <tr><td>Tower of Empty Meaningless Patterns <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToEMP)</span></td><td>Zone 9</td><td style="font-family:var(--font-mono);">11.42</td></tr>
-        <tr><td>Tower of Raging Tempest <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToRT)</span></td><td>Zone 10</td><td style="font-family:var(--font-mono);">11.64</td></tr>
-        <tr><td>Tower of Shunning Excursion <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToSE)</span></td><td>Pit of Misery</td><td style="font-family:var(--font-mono);">11.66</td></tr>
-        <tr><td>Tower of Champion's Road <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToCR)</span></td><td>Ring 9</td><td style="font-family:var(--font-mono);">11.71</td></tr>
-        <tr><td>Tower of Perlin Dreams of Greatness <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToPDoG)</span></td><td>Event</td><td style="font-family:var(--font-mono);">11.75</td></tr>
-        <tr><td>Tower of Challenging Obstacle Anarchy <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToCOA(M))</span></td><td>Monthly Challenge Towers</td><td style="font-family:var(--font-mono);">11.82</td></tr>
-        <tr><td>Tower of Elongated Runs <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToER)</span></td><td>Ring 7</td><td style="font-family:var(--font-mono);">11.85</td></tr>
-        <tr><td>Tower of Cruel Punishment <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToCP)</span></td><td>Ring 9</td><td style="font-family:var(--font-mono);">11.99</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:14px;font-size:0.85rem;color:var(--text-dim);">This is a sample, not the full list — 14 catastrophic towers are tracked in total, and ratings shift as towers get revamped or rebalanced.</p>
+    <p>Every tracked catastrophic tower, organized two ways: by the realm it's found in, and by where it sits in the overall difficulty chart (canon, non-canon, monthly, event, classic, or removed).</p>
+    <div id="tower-tabs-mount"></div>
   </section>
+
+  <script>
+    const TOWER_DATA = [
+      {name:'Tower of Elongated Runs',abbr:'ToER',group1:'Ring 7',sub:'High-Peak',category:'Canon',ratingDisplay:'11.85',rating:11.85,order:0},
+      {name:'Tower of Generation Failure',abbr:'ToGF',group1:'Ring 8',sub:'Bottom-Low',category:'Canon',ratingDisplay:'11.17',rating:11.17,order:1},
+      {name:'Tower of Inferno Galore',abbr:'ToIG',group1:'Ring 9',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:2},
+      {name:'Sadistically Terrifying Overachieving Neglectful Enragement Facility',abbr:'S.T.O.N.E. Facility',group1:'Ring 9',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:3},
+      {name:'Tower of Augmented Misery',abbr:'ToAM',group1:'Ring 9',sub:'Baseline',category:'Canon',ratingDisplay:'11.00',rating:11.0,order:4},
+      {name:'Tower of Champion\'s Road',abbr:'ToCR',group1:'Ring 9',sub:'High',category:'Canon',ratingDisplay:'11.71',rating:11.71,order:5},
+      {name:'Tower of Cruel Punishment',abbr:'ToCP',group1:'Ring 9',sub:'Peak',category:'Canon',ratingDisplay:'11.99',rating:11.99,order:6},
+      {name:'Tower of Descent Into Exile',abbr:'ToDIE',group1:'Zone 8',sub:'Low-Mid',category:'Canon',ratingDisplay:'11.36',rating:11.36,order:7},
+      {name:'Tower of Empty Meaningless Patterns',abbr:'ToEMP',group1:'Zone 9',sub:'Low-Mid',category:'Canon',ratingDisplay:'11.42',rating:11.42,order:8},
+      {name:'Tower of Raging Tempest',abbr:'ToRT',group1:'Zone 10',sub:'Mid-High',category:'Canon',ratingDisplay:'11.64',rating:11.64,order:9},
+      {name:'Tower of Perlin Dreams of Greatness',abbr:'ToPDoG',group1:'Event',sub:'High',category:'Event',ratingDisplay:'11.75',rating:11.75,order:10},
+      {name:'Tower of Challenging Obstacle Anarchy',abbr:'ToCOA(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'11.82',rating:11.82,order:11},
+      {name:'Tower of Vindictive Maneuvers',abbr:'ToVM',group1:'Pit of Misery',sub:'Bottom',category:'Canon',ratingDisplay:'11.04',rating:11.04,order:12},
+      {name:'Tower of Shunning Excursion',abbr:'ToSE',group1:'Pit of Misery',sub:'Mid-High',category:'Canon',ratingDisplay:'11.66',rating:11.66,order:13}
+    ];
+  </script>
+  <script src="../../js/tower-tabs.js"></script>
+  <script>
+    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Catastrophic', realmLabel: 'Organized by Realm' });
+  </script>
 
 </main>
 

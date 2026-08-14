@@ -48,30 +48,101 @@
 
   <section class="section" id="towers">
     <h2>Towers in this tier <span class="tag">83 tracked</span></h2>
-    <p>A spread of hard towers sampled from bottom to peak of the range, so you can see how the tier actually progresses rather than just its edges.</p>
-    <table>
-      <thead>
-        <tr><th>Tower</th><th>Area</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Tower of Keys To Success <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToKTS)</span></td><td>Ring 0</td><td style="font-family:var(--font-mono);">3.00</td></tr>
-        <tr><td>Steeple of Realm Odyssey (Classic) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SoRO(C))</span></td><td>Summit of Memories</td><td style="font-family:var(--font-mono);">3.17</td></tr>
-        <tr><td>Tower of Fun and Simple Trials <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToFaST)</span></td><td>Zone 4</td><td style="font-family:var(--font-mono);">3.29</td></tr>
-        <tr><td>Tower of Jubilant Exercises <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToJE(M))</span></td><td>Monthly Challenge Towers</td><td style="font-family:var(--font-mono);">3.36</td></tr>
-        <tr><td>Tower of Many Realms <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToMR(M))</span></td><td>Monthly Challenge Towers</td><td style="font-family:var(--font-mono);">3.46</td></tr>
-        <tr><td>Tower of Fatness <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToF)</span></td><td>Ring 3</td><td style="font-family:var(--font-mono);">3.54</td></tr>
-        <tr><td>Tower of Cracked, Crushed Cubes <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToCCC)</span></td><td>Zone 3</td><td style="font-family:var(--font-mono);">3.58</td></tr>
-        <tr><td>Steeple of Scrumptious Travels <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SoST)</span></td><td>Event</td><td style="font-family:var(--font-mono);">3.67</td></tr>
-        <tr><td>Tower of Overcoming Hatred <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToOH)</span></td><td>Ring 2</td><td style="font-family:var(--font-mono);">3.73</td></tr>
-        <tr><td>Tower of Calm Before The Storm <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToCBTS)</span></td><td>Steelspire Horizon</td><td style="font-family:var(--font-mono);">3.77</td></tr>
-        <tr><td>Steeple of Jungle Thrill <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SoJT(M))</span></td><td>Monthly Challenge Towers</td><td style="font-family:var(--font-mono);">3.83</td></tr>
-        <tr><td>Tower of Viaduct Traversing <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToVT)</span></td><td>Ashen Towerworks</td><td style="font-family:var(--font-mono);">3.89</td></tr>
-        <tr><td>Tower of Cosmic Tides <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToCT)</span></td><td>Zone 8</td><td style="font-family:var(--font-mono);">3.93</td></tr>
-        <tr><td>Steeple of Realm Odyssey <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SoRO)</span></td><td>Arcane Area</td><td style="font-family:var(--font-mono);">3.99</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:14px;font-size:0.85rem;color:var(--text-dim);">This is a sample, not the full list — 83 hard towers are tracked in total, and ratings shift as towers get revamped or rebalanced.</p>
+    <p>Every tracked hard tower, organized two ways: by the realm it's found in, and by where it sits in the overall difficulty chart (canon, non-canon, monthly, event, classic, or removed).</p>
+    <div id="tower-tabs-mount"></div>
   </section>
+
+  <script>
+    const TOWER_DATA = [
+      {name:'Tower of Keys To Success',abbr:'ToKTS',group1:'Ring 0',sub:'Baseline',category:'Canon',ratingDisplay:'3.00',rating:3.0,order:0},
+      {name:'Tower Not Found',abbr:'TNF',group1:'Ring 0',sub:'Bottom',category:'Canon',ratingDisplay:'3.11',rating:3.11,order:1},
+      {name:'Tower of Dancing All Night',abbr:'ToDAN',group1:'Ring 0',sub:'Low-Mid',category:'Canon',ratingDisplay:'3.35',rating:3.35,order:2},
+      {name:'Tower of Hecc',abbr:'ToH',group1:'Ring 1',sub:'Low',category:'Canon',ratingDisplay:'3.30',rating:3.3,order:3},
+      {name:'Tower of Killjoys',abbr:'ToK',group1:'Ring 1',sub:'Mid',category:'Canon',ratingDisplay:'3.47',rating:3.47,order:4},
+      {name:'This Is Probably A Tower',abbr:'TIPAT',group1:'Forgotten Ridge',sub:'Mid-High',category:'Canon',ratingDisplay:'3.61',rating:3.61,order:5},
+      {name:'Steeple of Uninstalling Roblox',abbr:'SoUR',group1:'Forgotten Ridge',sub:'High',category:'Canon',ratingDisplay:'3.74',rating:3.74,order:6},
+      {name:'Tower of Big Hole',abbr:'ToBH',group1:'Ring 2',sub:'Low-Mid',category:'Canon',ratingDisplay:'3.40',rating:3.4,order:7},
+      {name:'Tower of Overcoming Hatred',abbr:'ToOH',group1:'Ring 2',sub:'High',category:'Canon',ratingDisplay:'3.73',rating:3.73,order:8},
+      {name:'Steeple of Overgrown Ascension',abbr:'SoOA',group1:'Garden of Eeshöl',sub:'Bottom-Low',category:'Canon',ratingDisplay:'3.16',rating:3.16,order:9},
+      {name:'Steeple of Greenhouse Placidity',abbr:'SoGP',group1:'Garden of Eeshöl',sub:'High',category:'Canon',ratingDisplay:'3.70',rating:3.7,order:10},
+      {name:'Steeple of Feudal Foliage',abbr:'SoFF',group1:'Garden of Eeshöl',sub:'High-Peak',category:'Canon',ratingDisplay:'3.80',rating:3.8,order:11},
+      {name:'Steeple of Lost In Quiescence',abbr:'SoLIQ',group1:'Garden of Eeshöl',sub:'High-Peak',category:'Canon',ratingDisplay:'3.84',rating:3.84,order:12},
+      {name:'Tower of Fatness',abbr:'ToF',group1:'Ring 3',sub:'Mid',category:'Canon',ratingDisplay:'3.54',rating:3.54,order:13},
+      {name:'Tower of Winning Every Run',abbr:'ToWER',group1:'Ring 3',sub:'Mid',category:'Canon',ratingDisplay:'3.55',rating:3.55,order:14},
+      {name:'Tower of Terrible Mondays',abbr:'ToTM',group1:'Ring 4',sub:'Mid-High',category:'Canon',ratingDisplay:'3.60',rating:3.6,order:15},
+      {name:'Tower of Elysium',abbr:'ToE',group1:'Ring 4',sub:'Peak',category:'Canon',ratingDisplay:'3.92',rating:3.92,order:16},
+      {name:'Tower of Two Sided Troubles',abbr:'ToTST',group1:'Lost River',sub:'High-Peak',category:'Canon',ratingDisplay:'3.79',rating:3.79,order:17},
+      {name:'Tower of Friendly Jumps',abbr:'ToFJ',group1:'Ring 6',sub:'Bottom',category:'Canon',ratingDisplay:'3.03',rating:3.03,order:18},
+      {name:'Tower of Viaduct Traversing',abbr:'ToVT',group1:'Ashen Towerworks',sub:'Peak',category:'Canon',ratingDisplay:'3.89',rating:3.89,order:19},
+      {name:'Tower of Needing Basic Aptitude',abbr:'ToNBA',group1:'Ring 8',sub:'Peak',category:'Canon',ratingDisplay:'3.90',rating:3.9,order:20},
+      {name:'Tower of Peace',abbr:'ToP',group1:'Zone 1',sub:'Low',category:'Canon',ratingDisplay:'3.26',rating:3.26,order:21},
+      {name:'Tower of Hands Sweating',abbr:'ToHS',group1:'Zone 1',sub:'Mid',category:'Canon',ratingDisplay:'3.48',rating:3.48,order:22},
+      {name:'Tower of Mirrored Hecc',abbr:'ToMH',group1:'Zone 1',sub:'Peak',category:'Canon',ratingDisplay:'3.91',rating:3.91,order:23},
+      {name:'Tower of Fly High',abbr:'ToFH',group1:'Steelspire Horizon',sub:'Bottom',category:'Canon',ratingDisplay:'3.10',rating:3.1,order:24},
+      {name:'Tower of Calm Before The Storm',abbr:'ToCBTS',group1:'Steelspire Horizon',sub:'High',category:'Canon',ratingDisplay:'3.77',rating:3.77,order:25},
+      {name:'Tower of Ten Floors Challenge',abbr:'ToTFC',group1:'Steelspire Horizon',sub:'High-Peak',category:'Canon',ratingDisplay:'3.85',rating:3.85,order:26},
+      {name:'Tower of Ground Level Ascension',abbr:'ToGLA',group1:'Zone 2',sub:'Mid-High',category:'Canon',ratingDisplay:'3.57',rating:3.57,order:27},
+      {name:'Steeple of Atmospheric Powers',abbr:'SoAP',group1:'Arcane Area',sub:'Low-Mid',category:'Canon',ratingDisplay:'3.36',rating:3.36,order:28},
+      {name:'Steeple of Realm Odyssey',abbr:'SoRO',group1:'Arcane Area',sub:'Peak',category:'Canon',ratingDisplay:'3.99',rating:3.99,order:29},
+      {name:'Tower of Cracked, Crushed Cubes',abbr:'ToCCC',group1:'Zone 3',sub:'Mid-High',category:'Canon',ratingDisplay:'3.58',rating:3.58,order:30},
+      {name:'Tower of Xanthophobia',abbr:'ToX',group1:'Zone 3',sub:'High-Peak',category:'Canon',ratingDisplay:'3.81',rating:3.81,order:31},
+      {name:'Tower of Wild West Variadad',abbr:'ToWWV',group1:'Paradise Atoll',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:32},
+      {name:'Steeple of Waterfall',abbr:'SoW',group1:'Paradise Atoll',sub:'Low',category:'Canon',ratingDisplay:'3.24',rating:3.24,order:33},
+      {name:'Tower of Call It A Day',abbr:'ToCIAD',group1:'Paradise Atoll',sub:'Mid-High',category:'Canon',ratingDisplay:'3.59',rating:3.59,order:34},
+      {name:'Steeple of Abyssal Upturn',abbr:'SoAU',group1:'Paradise Atoll',sub:'Peak',category:'Canon',ratingDisplay:'3.94',rating:3.94,order:35},
+      {name:'Tower of Fun and Simple Trials',abbr:'ToFaST',group1:'Zone 4',sub:'Low',category:'Canon',ratingDisplay:'3.29',rating:3.29,order:36},
+      {name:'Tower of Up Is Down',abbr:'ToUID',group1:'Zone 4',sub:'Mid-High',category:'Canon',ratingDisplay:'3.56',rating:3.56,order:37},
+      {name:'Tower of Sovereign Traveling',abbr:'ToST',group1:'Zone 5',sub:'Low-Mid',category:'Canon',ratingDisplay:'3.40',rating:3.4,order:38},
+      {name:'Tower of Super Stupid Security Systems',abbr:'ToSSSS',group1:'Zone 5',sub:'Peak',category:'Canon',ratingDisplay:'3.91',rating:3.91,order:39},
+      {name:'Tower of Faulty Cityscapes',abbr:'ToFC',group1:'Dark Side of the Moon',sub:'Bottom',category:'Canon',ratingDisplay:'3.08',rating:3.08,order:40},
+      {name:'Tower of Unknown Mysteries',abbr:'ToUM',group1:'Dark Side of the Moon',sub:'Mid',category:'Canon',ratingDisplay:'3.50',rating:3.5,order:41},
+      {name:'Tower of Foreign Domains',abbr:'ToFD',group1:'Zone 6',sub:'Mid-High',category:'Canon',ratingDisplay:'3.64',rating:3.64,order:42},
+      {name:'Tower of Rough Waters',abbr:'ToRW',group1:'Zone 7',sub:'Low',category:'Canon',ratingDisplay:'3.23',rating:3.23,order:43},
+      {name:'Tower of Sweet Victory',abbr:'ToSV',group1:'Zone 7',sub:'High',category:'Canon',ratingDisplay:'3.72',rating:3.72,order:44},
+      {name:'Tower of Melons In Time',abbr:'ToMIT',group1:'Zone 8',sub:'High',category:'Canon',ratingDisplay:'3.76',rating:3.76,order:45},
+      {name:'Tower of Cosmic Tides',abbr:'ToCT',group1:'Zone 8',sub:'Peak',category:'Canon',ratingDisplay:'3.93',rating:3.93,order:46},
+      {name:'Steeple of Rising Molten Rocks',abbr:'SoRMR',group1:'Event',sub:'Low-Mid',category:'Event',ratingDisplay:'3.41',rating:3.41,order:47},
+      {name:'Steeple of Button Venturing',abbr:'SoBV',group1:'Event',sub:'Peak',category:'Event',ratingDisplay:'3.94',rating:3.94,order:48},
+      {name:'Steeple of Evergreen Ascension',abbr:'SoEA',group1:'Event',sub:'Low-Mid',category:'Event',ratingDisplay:'3.35',rating:3.35,order:49},
+      {name:'Steeple of Scrumptious Travels',abbr:'SoST',group1:'Event',sub:'High',category:'Event',ratingDisplay:'3.67',rating:3.67,order:50},
+      {name:'Tower of High Quality Fishing Boat',abbr:'ToHQFB',group1:'Event',sub:'Bottom-Low',category:'Event',ratingDisplay:'3.20',rating:3.2,order:51},
+      {name:'Steeple of Forsaken Anguish',abbr:'SoFA',group1:'Event',sub:'Low',category:'Event',ratingDisplay:'3.29',rating:3.29,order:52},
+      {name:'Rainbow Tower',abbr:'RT',group1:'Event',sub:'Peak',category:'Event',ratingDisplay:'3.97',rating:3.97,order:53},
+      {name:'Steeple of Dungeon Crawling',abbr:'SoDC',group1:'Event',sub:'High-Peak',category:'Event',ratingDisplay:'3.84',rating:3.84,order:54},
+      {name:'Tower of Getting Kinda Disappointed',abbr:'ToGKD',group1:'Event',sub:'Mid',category:'Event',ratingDisplay:'3.55',rating:3.55,order:55},
+      {name:'EESHOL (Region)',abbr:'E(R)',group1:'Event',sub:'High',category:'Event',ratingDisplay:'3.72',rating:3.72,order:56},
+      {name:'Tower of Webbed Palace',abbr:'ToWP',group1:'Event',sub:'High',category:'Event',ratingDisplay:'3.75',rating:3.75,order:57},
+      {name:'Steeple of Velvet Delirium',abbr:'SoVD',group1:'Event',sub:'Peak',category:'Event',ratingDisplay:'3.89',rating:3.89,order:58},
+      {name:'Steeple of Castle Within Glass',abbr:'SoCWG',group1:'Event',sub:'High-Peak',category:'Event',ratingDisplay:'3.88',rating:3.88,order:59},
+      {name:'Steeple of Eggstra Eggciting Egg Eggsploration',abbr:'SoEEEE',group1:'Event',sub:'High',category:'Event',ratingDisplay:'3.70',rating:3.7,order:60},
+      {name:'Tower of Outer Space Exploration',abbr:'ToOSE(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'3.81',rating:3.81,order:61},
+      {name:'Tower of Many Realms',abbr:'ToMR(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'3.46',rating:3.46,order:62},
+      {name:'Tower of Spaceship Finding',abbr:'ToSF(M)',group1:'Monthly Challenge Towers',sub:'Mid-High',category:'Monthly',ratingDisplay:'3.61',rating:3.61,order:63},
+      {name:'Tower of Mild Irritation',abbr:'ToMI(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'3.54',rating:3.54,order:64},
+      {name:'Steeple of Jungle Thrill',abbr:'SoJT(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'3.83',rating:3.83,order:65},
+      {name:'Tower of Medium Demon',abbr:'ToMD(M)',group1:'Monthly Challenge Towers',sub:'Low-Mid',category:'Monthly',ratingDisplay:'3.43',rating:3.43,order:66},
+      {name:'Steeple of Oversized Picking',abbr:'SoOP(M)',group1:'Monthly Challenge Towers',sub:'Low-Mid',category:'Monthly',ratingDisplay:'3.38',rating:3.38,order:67},
+      {name:'Tower of Savory Citrus Platforming',abbr:'ToSCP(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'3.48',rating:3.48,order:68},
+      {name:'Steeple of Garden Hose',abbr:'SoGH(M)',group1:'Monthly Challenge Towers',sub:'High',category:'Monthly',ratingDisplay:'3.75',rating:3.75,order:69},
+      {name:'Tower of Easing Exultant Expeditions',abbr:'ToEEE(M)',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'3.96',rating:3.96,order:70},
+      {name:'Steeple of Vivid Island Venturing',abbr:'SoVIV(M)',group1:'Monthly Challenge Towers',sub:'Low',category:'Monthly',ratingDisplay:'3.29',rating:3.29,order:71},
+      {name:'Tower of Advanced Electronics',abbr:'ToAE(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'3.52',rating:3.52,order:72},
+      {name:'Tower of Jubilant Exercises',abbr:'ToJE(M)',group1:'Monthly Challenge Towers',sub:'Low-Mid',category:'Monthly',ratingDisplay:'3.36',rating:3.36,order:73},
+      {name:'Tower of Zingy Gaming',abbr:'ToZG(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'3.88',rating:3.88,order:74},
+      {name:'Tower of Ravelled Motion',abbr:'ToRM(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'3.82',rating:3.82,order:75},
+      {name:'Tower of Linear Troubles',abbr:'ToLT(M)',group1:'Monthly Challenge Towers',sub:'High',category:'Monthly',ratingDisplay:'3.75',rating:3.75,order:76},
+      {name:'Tower of Split Decisions',abbr:'ToSD(M)',group1:'Monthly Challenge Towers',sub:'Mid-High',category:'Monthly',ratingDisplay:'3.63',rating:3.63,order:77},
+      {name:'Steeple of Poisoned Factory Gum',abbr:'SoPFG(M)',group1:'Monthly Challenge Towers',sub:'High',category:'Monthly',ratingDisplay:'3.70',rating:3.7,order:78},
+      {name:'Steeple of Realm Odyssey (Classic)',abbr:'SoRO(C)',group1:'Summit of Memories',sub:'Bottom-Low',category:'Classic',ratingDisplay:'3.17',rating:3.17,order:79},
+      {name:'Tower of Hands Sweating (Classic)',abbr:'ToHS(C)',group1:'Summit of Memories',sub:'Low',category:'Classic',ratingDisplay:'3.28',rating:3.28,order:80},
+      {name:'Tower of Overcoming Hatred (Classic)',abbr:'ToOH(C)',group1:'Summit of Memories',sub:'High-Peak',category:'Classic',ratingDisplay:'3.88',rating:3.88,order:81},
+      {name:'Tower of Mirrored Hecc (Classic)',abbr:'ToMH(C)',group1:'Summit of Memories',sub:'Peak',category:'Classic',ratingDisplay:'3.93',rating:3.93,order:82}
+    ];
+  </script>
+  <script src="../../js/tower-tabs.js"></script>
+  <script>
+    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Hard', realmLabel: 'Organized by Realm' });
+  </script>
 
 </main>
 

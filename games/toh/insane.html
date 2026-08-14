@@ -48,30 +48,74 @@
 
   <section class="section" id="towers">
     <h2>Towers in this tier <span class="tag">56 tracked</span></h2>
-    <p>A spread of insane towers sampled from bottom to peak of the range, so you can see how the tier actually progresses rather than just its edges.</p>
-    <table>
-      <thead>
-        <tr><th>Tower</th><th>Area</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Tower of Double Trouble <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToDT)</span></td><td>Zone 2</td><td style="font-family:var(--font-mono);">8.00</td></tr>
-        <tr><td>Thanos Tower <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(TT(C))</span></td><td>Summit of Memories</td><td style="font-family:var(--font-mono);">8.05</td></tr>
-        <tr><td>Ring 4 Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(R4TR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">8.12</td></tr>
-        <tr><td>Tower of Extreme Hell <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToEH)</span></td><td>Ring 7</td><td style="font-family:var(--font-mono);">8.17</td></tr>
-        <tr><td>Zone 5 Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(Z5TR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">8.21</td></tr>
-        <tr><td>Ring 9 Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(R9TR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">8.28</td></tr>
-        <tr><td>Tower of Speeding Right Through <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToSRT)</span></td><td>Steelspire Horizon</td><td style="font-family:var(--font-mono);">8.39</td></tr>
-        <tr><td>Tower of Quaint Activations <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToQA(M))</span></td><td>Monthly Challenge Towers</td><td style="font-family:var(--font-mono);">8.47</td></tr>
-        <tr><td>Steelspire Horizon Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SHTR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">8.57</td></tr>
-        <tr><td>Tower of Vivid Sections <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToVS)</span></td><td>Ring 4</td><td style="font-family:var(--font-mono);">8.72</td></tr>
-        <tr><td>Zone 2 Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(Z2TR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">8.84</td></tr>
-        <tr><td>Tower of Really Very Artificial Inspiration <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToRVAI)</span></td><td>Events</td><td style="font-family:var(--font-mono);">8.88</td></tr>
-        <tr><td>Ashen Towerworks Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ATwTR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">8.94</td></tr>
-        <tr><td>Ring 2 Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(R2TR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">8.98</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:14px;font-size:0.85rem;color:var(--text-dim);">This is a sample, not the full list — 56 insane towers are tracked in total, and ratings shift as towers get revamped or rebalanced.</p>
+    <p>Every tracked insane tower, organized two ways: by the realm it's found in, and by where it sits in the overall difficulty chart (canon, non-canon, monthly, event, classic, or removed).</p>
+    <div id="tower-tabs-mount"></div>
   </section>
+
+  <script>
+    const TOWER_DATA = [
+      {name:'Tower of Infinity Gauntlet',abbr:'ToIG',group1:'Ring 1',sub:'Low',category:'Canon',ratingDisplay:'8.23',rating:8.23,order:0},
+      {name:'Tower of Mind Breaking',abbr:'ToMB',group1:'Forgotten Ridge',sub:'Low-Mid',category:'Canon',ratingDisplay:'8.36',rating:8.36,order:1},
+      {name:'Tower of Difficulty Chart',abbr:'ToDC',group1:'Ring 2',sub:'Bottom',category:'Canon',ratingDisplay:'8.03',rating:8.03,order:2},
+      {name:'Tower of Confusion',abbr:'ToC',group1:'Ring 3',sub:'Peak',category:'Canon',ratingDisplay:'8.94',rating:8.94,order:3},
+      {name:'Tower of Vivid Sections',abbr:'ToVS',group1:'Ring 4',sub:'High',category:'Canon',ratingDisplay:'8.72',rating:8.72,order:4},
+      {name:'Tower of Icy Blizzards',abbr:'ToIB',group1:'Ring 5',sub:'Mid',category:'Canon',ratingDisplay:'8.47',rating:8.47,order:5},
+      {name:'Tower of Unsettling Heights',abbr:'ToUH',group1:'Lost River',sub:'Bottom-Low',category:'Canon',ratingDisplay:'8.19',rating:8.19,order:6},
+      {name:'Tower of Raw, Unfiltered Skill',abbr:'ToRUS',group1:'Ring 7',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:7},
+      {name:'Tower of Extreme Hell',abbr:'ToEH',group1:'Ring 7',sub:'Bottom-Low',category:'Canon',ratingDisplay:'8.17',rating:8.17,order:8},
+      {name:'Tower of High Adrenaline',abbr:'ToHA',group1:'Ring 9',sub:'Bottom-Low',category:'Canon',ratingDisplay:'8.14',rating:8.14,order:9},
+      {name:'Tower of Bent Trauma',abbr:'ToBT',group1:'Ring 9',sub:'Bottom-Low',category:'Canon',ratingDisplay:'8.21',rating:8.21,order:10},
+      {name:'Tower of Curved Ascent',abbr:'ToCA',group1:'Ring 9',sub:'Mid',category:'Canon',ratingDisplay:'8.46',rating:8.46,order:11},
+      {name:'Tower of Thinning Layers',abbr:'ToTL',group1:'Zone 1',sub:'Mid',category:'Canon',ratingDisplay:'8.48',rating:8.48,order:12},
+      {name:'Tower of Speeding Right Through',abbr:'ToSRT',group1:'Steelspire Horizon',sub:'Low-Mid',category:'Canon',ratingDisplay:'8.39',rating:8.39,order:13},
+      {name:'Tower of Double Trouble',abbr:'ToDT',group1:'Zone 2',sub:'Baseline',category:'Canon',ratingDisplay:'8.00',rating:8.0,order:14},
+      {name:'Tower of Inevitable Failure',abbr:'ToIF',group1:'Zone 4',sub:'Mid',category:'Canon',ratingDisplay:'8.45',rating:8.45,order:15},
+      {name:'Tower of Polychromatic Zero',abbr:'ToPZ',group1:'Zone 5',sub:'High',category:'Canon',ratingDisplay:'8.77',rating:8.77,order:16},
+      {name:'Tower of Distorted Nightmares',abbr:'ToDN',group1:'Dark Side of the Moon',sub:'High-Peak',category:'Canon',ratingDisplay:'8.86',rating:8.86,order:17},
+      {name:'Tower of Spin To Win',abbr:'ToSTW',group1:'Dark Side of the Moon',sub:'Peak',category:'Removed',ratingDisplay:'8.89',rating:8.89,order:18},
+      {name:'Tower of Rough Endoplasmic Reticulum',abbr:'ToRER',group1:'Zone 8',sub:'Peak',category:'Canon',ratingDisplay:'8.89',rating:8.89,order:19},
+      {name:'Tower of Hollow Reformations',abbr:'ToHR',group1:'Zone 9',sub:'High',category:'Canon',ratingDisplay:'8.70',rating:8.7,order:20},
+      {name:'Tower of Rain on My World',abbr:'ToRoMW',group1:'Zone 10',sub:'High-Peak',category:'Canon',ratingDisplay:'8.88',rating:8.88,order:21},
+      {name:'Tower of Tee Hee Time',abbr:'ToTHT',group1:'Zone 10',sub:'Peak',category:'Canon',ratingDisplay:'8.92',rating:8.92,order:22},
+      {name:'Baldi Tower',abbr:'BT',group1:'Events',sub:'Mid-High',category:'Event',ratingDisplay:'8.62',rating:8.62,order:23},
+      {name:'Tower of Terrain Climbing Adventures',abbr:'ToTCA',group1:'Events',sub:'Bottom-Low',category:'Event',ratingDisplay:'8.12',rating:8.12,order:24},
+      {name:'Steeple of Gears Locked Up Because It\'s Cold',abbr:'SoGLUBIC',group1:'Events',sub:'High',category:'Event',ratingDisplay:'8.77',rating:8.77,order:25},
+      {name:'Tower of Confusion (Legacy)',abbr:'ToC(L)',group1:'Events',sub:'Bottom',category:'Removed',ratingDisplay:'8.01',rating:8.01,order:26},
+      {name:'Mini Citadel of Mini Citadel',abbr:'MCoMC',group1:'Events',sub:'Bottom',category:'Event',ratingDisplay:'8.04',rating:8.04,order:27},
+      {name:'Tower of Unending Bamboozles',abbr:'ToUB(L)',group1:'Events',sub:'Peak',category:'Removed',ratingDisplay:'8.95',rating:8.95,order:28},
+      {name:'Cringe Tower & Hinge Tower',abbr:'CT&HT',group1:'Events',sub:'Mid-High',category:'Event',ratingDisplay:'8.57',rating:8.57,order:29},
+      {name:'Tower of Really Very Artificial Inspiration',abbr:'ToRVAI',group1:'Events',sub:'High-Peak',category:'Event',ratingDisplay:'8.88',rating:8.88,order:30},
+      {name:'Tower of Slipping Through Reality',abbr:'ToSTR(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'8.86',rating:8.86,order:31},
+      {name:'Tower of Quaint Activations',abbr:'ToQA(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'8.47',rating:8.47,order:32},
+      {name:'Tower of Boreal Disarray',abbr:'ToBD(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'8.51',rating:8.51,order:33},
+      {name:'Tower of You\'re A Star',abbr:'ToYAS(M)',group1:'Monthly Challenge Towers',sub:'Bottom',category:'Monthly',ratingDisplay:'8.08',rating:8.08,order:34},
+      {name:'Tower of Fear of Heights',abbr:'ToFoH(M)',group1:'Monthly Challenge Towers',sub:'Low-Mid',category:'Monthly',ratingDisplay:'8.34',rating:8.34,order:35},
+      {name:'Tower of Hyper Fantasy Overdrive',abbr:'ToHFO(M)',group1:'Monthly Challenge Towers',sub:'Low',category:'Monthly',ratingDisplay:'8.25',rating:8.25,order:36},
+      {name:'Thanos Tower',abbr:'TT(C)',group1:'Summit of Memories',sub:'Bottom',category:'Classic',ratingDisplay:'8.05',rating:8.05,order:37},
+      {name:'Tower of Difficulty Chart (Classic)',abbr:'ToDC(C)',group1:'Summit of Memories',sub:'Bottom-Low',category:'Classic',ratingDisplay:'8.15',rating:8.15,order:38},
+      {name:'Forgotten Ridge Tower Rush',abbr:'FRTR',group1:'Tower Rushes',sub:'Low-Mid',category:'Canon',ratingDisplay:'8.35',rating:8.35,order:39},
+      {name:'Ring 2 Tower Rush',abbr:'R2TR',group1:'Tower Rushes',sub:'Peak',category:'Canon',ratingDisplay:'8.98',rating:8.98,order:40},
+      {name:'Ring 4 Tower Rush',abbr:'R4TR',group1:'Tower Rushes',sub:'Bottom-Low',category:'Canon',ratingDisplay:'8.12',rating:8.12,order:41},
+      {name:'Silent Abyss Tower Rush',abbr:'SATR',group1:'Tower Rushes',sub:'Bottom-Low',category:'Canon',ratingDisplay:'8.15',rating:8.15,order:42},
+      {name:'Ring 6 Tower Rush',abbr:'R6TR',group1:'Tower Rushes',sub:'Mid',category:'Canon',ratingDisplay:'8.45',rating:8.45,order:43},
+      {name:'Ashen Towerworks Tower Rush',abbr:'ATwTR',group1:'Tower Rushes',sub:'Peak',category:'Canon',ratingDisplay:'8.94',rating:8.94,order:44},
+      {name:'Ring 7 Tower Rush',abbr:'R7TR',group1:'Tower Rushes',sub:'High-Peak',category:'Canon',ratingDisplay:'8.78',rating:8.78,order:45},
+      {name:'Ring 9 Tower Rush',abbr:'R9TR',group1:'Tower Rushes',sub:'Low',category:'Canon',ratingDisplay:'8.28',rating:8.28,order:46},
+      {name:'Steelspire Horizon Tower Rush',abbr:'SHTR',group1:'Tower Rushes',sub:'Mid-High',category:'Canon',ratingDisplay:'8.57',rating:8.57,order:47},
+      {name:'Zone 2 Tower Rush',abbr:'Z2TR',group1:'Tower Rushes',sub:'High-Peak',category:'Canon',ratingDisplay:'8.84',rating:8.84,order:48},
+      {name:'Zone 5 Tower Rush',abbr:'Z5TR',group1:'Tower Rushes',sub:'Bottom-Low',category:'Canon',ratingDisplay:'8.21',rating:8.21,order:49},
+      {name:'Dark Side of the Moon Tower Rush',abbr:'DSotMTR',group1:'Tower Rushes',sub:'High',category:'Canon',ratingDisplay:'8.69',rating:8.69,order:50},
+      {name:'Zone 6 Tower Rush',abbr:'Z6TR',group1:'Tower Rushes',sub:'Low',category:'Canon',ratingDisplay:'8.23',rating:8.23,order:51},
+      {name:'Zone 7 Tower Rush',abbr:'Z7TR',group1:'Tower Rushes',sub:'Bottom',category:'Canon',ratingDisplay:'8.06',rating:8.06,order:52},
+      {name:'Zone 8 Tower Rush',abbr:'Z8TR',group1:'Tower Rushes',sub:'Peak',category:'Canon',ratingDisplay:'8.96',rating:8.96,order:53},
+      {name:'Time-Lost Plain Tower Rush',abbr:'TLPTR',group1:'Tower Rushes',sub:'Peak',category:'Canon',ratingDisplay:'8.97',rating:8.97,order:54},
+      {name:'Summit of Memories Tower Rush',abbr:'SoMTR',group1:'Tower Rushes',sub:'Bottom-Low',category:'Canon',ratingDisplay:'8.19',rating:8.19,order:55}
+    ];
+  </script>
+  <script src="../../js/tower-tabs.js"></script>
+  <script>
+    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Insane', realmLabel: 'Organized by Realm' });
+  </script>
 
 </main>
 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nil — Eternal Towers of Hell — Checkpoint</title>
+<meta name="description" content="Nil towers in Eternal Towers of Hell — towers that exist in the game but haven't been placed on the difficulty chart.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="theme-toh" style="--accent:#9CA3AF;">
+
+<nav class="site-nav">
+  <a class="brand" href="../../index.html">
+    <svg class="brand-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 1 L22 7 V17 L12 23 L2 17 V7 Z M12 5 L18 8.5 V15.5 L12 19 L6 15.5 V8.5 Z"/>
+    </svg>
+    Checkpoint
+  </a>
+  <span class="crumbs"><a href="../../index.html">wiki</a> / <a href="../tower-of-hell.html">eternal towers of hell</a> / nil</span>
+</nav>
+
+<main class="wrap">
+
+  <section class="game-hero">
+    <span class="eyebrow"><a href="../tower-of-hell.html" style="color:inherit;">Eternal Towers of Hell</a> · difficulty tier</span>
+    <div class="diff-hero">
+      <span class="big-swatch" style="background:#808080;border:2px solid rgba(255,255,255,0.15);"></span>
+      <h1>Nil</h1>
+    </div>
+    <p class="dek">No numeric range · Solid grey · <span class="canon-badge noncanon">Unrated</span></p>
+  </section>
+
+  <nav class="pillnav">
+    <a href="unreal.html">← Unreal</a>
+    <a href="../tower-of-hell.html">All tiers</a>
+    <span></span>
+  </nav>
+
+  <section class="section" id="baseline">
+    <h2>What is Nil? <span class="tag">reference</span></h2>
+    <div class="callout">
+      <strong>Nil towers</strong> exist in the game but haven't been placed on the difficulty chart yet — no rating, no baseline, no ring assignment. They're tracked here so they aren't lost, but treat their eventual placement as a total unknown.
+    </div>
+  </section>
+
+  <section class="section" id="towers">
+    <h2>Towers in this tier <span class="tag">38 tracked</span></h2>
+    <p>Every tracked nil tower. Since none of them have a realm, rating, or confirmed category yet, they're listed together rather than split into tabs by realm — the category tabs below still apply where a tower's naming gives it away (classic, monthly, etc).</p>
+    <div id="tower-tabs-mount"></div>
+  </section>
+
+  <script>
+    const TOWER_DATA = [
+      {name:'Citadel of Void',abbr:'CoV',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:0},
+      {name:'Tower of Collecting Dust Particles',abbr:'ToCDP',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:1},
+      {name:'Not Even Playable Gameplay',abbr:'NEPG',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:2},
+      {name:'Tower of Ginga Glory',abbr:'ToGG',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:3},
+      {name:'Tower of Existential Crisis',abbr:'ToEC',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:4},
+      {name:'Tower of Absolute Corruption',abbr:'ToAC',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:5},
+      {name:'Tower of Spiralling Fates: Side-B',abbr:'ToSF:SB',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:6},
+      {name:'Tower of Water Melon: Side B',abbr:'ToWM:SB',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:7},
+      {name:'Tower of Boobawamba',abbr:'ToB',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:8},
+      {name:'Citadel of The Human Condition',abbr:'CoTHC',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:9},
+      {name:'Tower of Unending Unforgiveness',abbr:'ToUU',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:10},
+      {name:'Machine Girl Tower [V1]',abbr:'MGT',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:11},
+      {name:'Tower of Parched and Exhausted',abbr:'ToPaE',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:12},
+      {name:'Tower of Conspicuous Retribution',abbr:'ToCR',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:13},
+      {name:'Steeple of Frightening Raw Difficulty',abbr:'SoFRD',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:14},
+      {name:'Tower of Thunder Paracosm',abbr:'ToTP',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:15},
+      {name:'Tower of Veiled Prophecy',abbr:'ToVP',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:16},
+      {name:'Tower of Memorization',abbr:'ToM',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:17},
+      {name:'Tower of Adrifted Behemoth',abbr:'ToAB',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:18},
+      {name:'Tower of Diabolical Stratagem',abbr:'ToDS',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:19},
+      {name:'Tower of Funny Fish',abbr:'ToFF',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:20},
+      {name:'Steeple of Happy',abbr:'SoH',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:21},
+      {name:'Tuscan Tower',abbr:'TT',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:22},
+      {name:'Steeple of Eating Snakes',abbr:'SoES',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:23},
+      {name:'Tower of Inordinately Deceptional Arduous Mishap',abbr:'ToIDAM',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:24},
+      {name:'Tower of Extinction',abbr:'ToE',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:25},
+      {name:'Tower of The Physics Breaker',abbr:'ToTPB',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:26},
+      {name:'Tower of The Drive Towards Human Limits',abbr:'ToTDTHL',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:27},
+      {name:'Tower of The End',abbr:'ToTE',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:28},
+      {name:'Tower of Chewing Gum',abbr:'ToCG',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:29},
+      {name:'Tower of Achromatic Iridescence',abbr:'ToAI',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:30},
+      {name:'The Last Stand',abbr:'TLS',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:31},
+      {name:'LC Waikiki Tower',abbr:'LCWT',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:32},
+      {name:'Tower of Sacrilegious Jumps',abbr:'ToSJ',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:33},
+      {name:'The Eternal Final Stretch',abbr:'TEFS',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:34},
+      {name:'Tower of Unrealistic Victory',abbr:'ToUV',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:35},
+      {name:'Steeple of Epic Juice',abbr:'SoEJ',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:36},
+      {name:'Tower of The Violent Impediments',abbr:'ToTVI',group1:'Nil',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:37}
+    ];
+  </script>
+  <script src="../../js/tower-tabs.js"></script>
+  <script>
+    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Nil', realmLabel: 'All Nil Towers' });
+  </script>
+
+</main>
+
+<footer class="wrap">
+  <a href="../tower-of-hell.html">← back to Eternal Towers of Hell</a>
+</footer>
+
+</body>
+</html>

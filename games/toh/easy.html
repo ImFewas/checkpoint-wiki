@@ -48,30 +48,63 @@
 
   <section class="section" id="towers">
     <h2>Towers in this tier <span class="tag">45 tracked</span></h2>
-    <p>A spread of easy towers sampled from bottom to peak of the range, so you can see how the tier actually progresses rather than just its edges.</p>
-    <table>
-      <thead>
-        <tr><th>Tower</th><th>Area</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Tower of Genesis <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToG)</span></td><td>Ring 0</td><td style="font-family:var(--font-mono);">1.00</td></tr>
-        <tr><td>Not Even A Tower <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(NEAT)</span></td><td>Ring 1</td><td style="font-family:var(--font-mono);">1.11</td></tr>
-        <tr><td>Tower of Annoyingly Simple Trials (Classic) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToAST(C))</span></td><td>Summit of Memories</td><td style="font-family:var(--font-mono);">1.21</td></tr>
-        <tr><td>100M Celebration <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(100MC)</span></td><td>Event</td><td style="font-family:var(--font-mono);">1.31</td></tr>
-        <tr><td>Tower of Buttons <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToB)</span></td><td>Ring 0</td><td style="font-family:var(--font-mono);">1.48</td></tr>
-        <tr><td>Tower of Anger <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToA)</span></td><td>Ring 1</td><td style="font-family:var(--font-mono);">1.50</td></tr>
-        <tr><td>Steeple of Devil's Snare <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SoDS)</span></td><td>Garden of Eeshöl</td><td style="font-family:var(--font-mono);">1.54</td></tr>
-        <tr><td>Steeple of Seasonal Nature <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SoSN(M))</span></td><td>Monthly Challenge Towers</td><td style="font-family:var(--font-mono);">1.56</td></tr>
-        <tr><td>Tower of Funny Thoughts (Classic) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToFT(C))</span></td><td>Summit of Memories</td><td style="font-family:var(--font-mono);">1.68</td></tr>
-        <tr><td>Steeple of Mystical Marine <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SoMM)</span></td><td>Paradise Atoll</td><td style="font-family:var(--font-mono);">1.76</td></tr>
-        <tr><td>Tower of Modernistic Design Choices <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToMDC)</span></td><td>Pit of Misery</td><td style="font-family:var(--font-mono);">1.84</td></tr>
-        <tr><td>Steeple of Broken Beyond Repair <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(SoBBR(M))</span></td><td>Monthly Challenge Towers</td><td style="font-family:var(--font-mono);">1.88</td></tr>
-        <tr><td>Tower of Critical Damage <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToCD)</span></td><td>Ring 0</td><td style="font-family:var(--font-mono);">1.93</td></tr>
-        <tr><td>Tower of Overestimating Difficulty <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToOD)</span></td><td>Zone 3</td><td style="font-family:var(--font-mono);">1.99</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:14px;font-size:0.85rem;color:var(--text-dim);">This is a sample, not the full list — 45 easy towers are tracked in total, and ratings shift as towers get revamped or rebalanced.</p>
+    <p>Every tracked easy tower, organized two ways: by the realm it's found in, and by where it sits in the overall difficulty chart (canon, non-canon, monthly, event, classic, or removed).</p>
+    <div id="tower-tabs-mount"></div>
   </section>
+
+  <script>
+    const TOWER_DATA = [
+      {name:'Tower of Genesis',abbr:'ToG',group1:'Ring 0',sub:'Baseline',category:'Canon',ratingDisplay:'1.00',rating:1.0,order:0},
+      {name:'Tower of Motion Evolution',abbr:'ToME',group1:'Ring 0',sub:'Mid',category:'Canon',ratingDisplay:'1.46',rating:1.46,order:1},
+      {name:'Tower of Buttons',abbr:'ToB',group1:'Ring 0',sub:'Mid',category:'Canon',ratingDisplay:'1.48',rating:1.48,order:2},
+      {name:'Tower of Critical Damage',abbr:'ToCD',group1:'Ring 0',sub:'Peak',category:'Canon',ratingDisplay:'1.93',rating:1.93,order:3},
+      {name:'Not Even A Tower',abbr:'NEAT',group1:'Ring 1',sub:'Bottom',category:'Canon',ratingDisplay:'1.11',rating:1.11,order:4},
+      {name:'Tower of A Simple Time',abbr:'ToAST',group1:'Ring 1',sub:'Low',category:'Canon',ratingDisplay:'1.25',rating:1.25,order:5},
+      {name:'Tower of Anger',abbr:'ToA',group1:'Ring 1',sub:'Mid',category:'Canon',ratingDisplay:'1.50',rating:1.5,order:6},
+      {name:'Steeple of Meaningless Decisions',abbr:'SoMD',group1:'Forgotten Ridge',sub:'Bottom-Low',category:'Canon',ratingDisplay:'1.22',rating:1.22,order:7},
+      {name:'Tower of Jolly Good Fun',abbr:'ToJGF',group1:'Forgotten Ridge',sub:'Mid-High',category:'Canon',ratingDisplay:'1.65',rating:1.65,order:8},
+      {name:'Tower of One Equals Zero',abbr:'ToOEZ',group1:'Ring 2',sub:'Bottom',category:'Removed',ratingDisplay:'1.01',rating:1.01,order:9},
+      {name:'Maybe A Tower',abbr:'MAT',group1:'Ring 2',sub:'Bottom',category:'Canon',ratingDisplay:'1.07',rating:1.07,order:10},
+      {name:'Steeple of Beginner\'s Journey',abbr:'SoBJ',group1:'Garden of Eeshöl',sub:'Bottom',category:'Canon',ratingDisplay:'1.11',rating:1.11,order:11},
+      {name:'Steeple of Devil\'s Snare',abbr:'SoDS',group1:'Garden of Eeshöl',sub:'Mid',category:'Canon',ratingDisplay:'1.54',rating:1.54,order:12},
+      {name:'Tower of Funny Thoughts',abbr:'ToFT',group1:'Ring 3',sub:'High',category:'Canon',ratingDisplay:'1.70',rating:1.7,order:13},
+      {name:'Tower of Spiralling Heights',abbr:'ToSH',group1:'Ring 4',sub:'Peak',category:'Canon',ratingDisplay:'1.90',rating:1.9,order:14},
+      {name:'Tower of Easy Modo',abbr:'ToEM',group1:'Zone 1',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:15},
+      {name:'Tower of Zero Disturbances',abbr:'ToZD',group1:'Zone 1',sub:'Bottom-Low',category:'Canon',ratingDisplay:'1.15',rating:1.15,order:16},
+      {name:'Tower of Peaceful Happiness and Tranquility',abbr:'ToPHaT',group1:'Zone 1',sub:'Mid',category:'Canon',ratingDisplay:'1.55',rating:1.55,order:17},
+      {name:'Tower of Another Beginning',abbr:'ToAB',group1:'Zone 1',sub:'Peak',category:'Removed',ratingDisplay:'1.89',rating:1.89,order:18},
+      {name:'Steeple of Zip Zap Pop!',abbr:'SoZZP',group1:'Steelspire Horizon',sub:'Low-Mid',category:'Canon',ratingDisplay:'1.43',rating:1.43,order:19},
+      {name:'Steeple of Golf Course',abbr:'SoGC',group1:'Steelspire Horizon',sub:'High-Peak',category:'Canon',ratingDisplay:'1.86',rating:1.86,order:20},
+      {name:'Tower of Six Feet Under',abbr:'ToSFU',group1:'Zone 3',sub:'Bottom',category:'Canon',ratingDisplay:'1.05',rating:1.05,order:21},
+      {name:'Tower of Overestimating Difficulty',abbr:'ToOD',group1:'Zone 3',sub:'Peak',category:'Canon',ratingDisplay:'1.99',rating:1.99,order:22},
+      {name:'Possibly A Tower',abbr:'PAT',group1:'Paradise Atoll',sub:'Mid',category:'Canon',ratingDisplay:'1.54',rating:1.54,order:23},
+      {name:'Steeple of Mystical Marine',abbr:'SoMM',group1:'Paradise Atoll',sub:'High',category:'Canon',ratingDisplay:'1.76',rating:1.76,order:24},
+      {name:'Tower of Fairly Simple Challenges',abbr:'ToFSC',group1:'Zone 4',sub:'Mid-High',category:'Canon',ratingDisplay:'1.58',rating:1.58,order:25},
+      {name:'Tower of Trouble',abbr:'ToT(L)',group1:'Event',sub:'High',category:'Removed',ratingDisplay:'1.72',rating:1.72,order:26},
+      {name:'Steeple of Ghostly Mischief',abbr:'SoGM',group1:'Event',sub:'Peak',category:'Event',ratingDisplay:'1.90',rating:1.9,order:27},
+      {name:'100M Celebration',abbr:'100MC',group1:'Event',sub:'Low',category:'Event',ratingDisplay:'1.31',rating:1.31,order:28},
+      {name:'100M Trial',abbr:'100MT',group1:'Event',sub:'Low-Mid',category:'Event',ratingDisplay:'1.40',rating:1.4,order:29},
+      {name:'Steeple of Grand Eggworks',abbr:'SoGE',group1:'Event',sub:'Peak',category:'Event',ratingDisplay:'1.95',rating:1.95,order:30},
+      {name:'Tower of Frame Carvings',abbr:'ToFC(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'1.49',rating:1.49,order:31},
+      {name:'Tower of Coolio Sliding',abbr:'ToCS(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'1.82',rating:1.82,order:32},
+      {name:'Tower of Placid Travels',abbr:'ToPT(M)',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'1.97',rating:1.97,order:33},
+      {name:'Tower of Little Frustration',abbr:'ToLF(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'1.87',rating:1.87,order:34},
+      {name:'Tower of Light Hues',abbr:'ToLH(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'1.79',rating:1.79,order:35},
+      {name:'Steeple of Broken Beyond Repair',abbr:'SoBBR(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'1.88',rating:1.88,order:36},
+      {name:'Steeple of Seasonal Nature',abbr:'SoSN(M)',group1:'Monthly Challenge Towers',sub:'Mid-High',category:'Monthly',ratingDisplay:'1.56',rating:1.56,order:37},
+      {name:'Steeple of Brilliant Button Quirks',abbr:'SoBBQ(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'1.48',rating:1.48,order:38},
+      {name:'Tower of Hydrophobic Batteries',abbr:'ToHB(M)',group1:'Monthly Challenge Towers',sub:'High',category:'Monthly',ratingDisplay:'1.76',rating:1.76,order:39},
+      {name:'Tower of Modernistic Design Choices',abbr:'ToMDC',group1:'Pit of Misery',sub:'High-Peak',category:'Canon',ratingDisplay:'1.84',rating:1.84,order:40},
+      {name:'Tower of Annoyingly Simple Trials (Classic)',abbr:'ToAST(C)',group1:'Summit of Memories',sub:'Bottom-Low',category:'Classic',ratingDisplay:'1.21',rating:1.21,order:41},
+      {name:'Tower of Anger (Classic)',abbr:'ToA(C)',group1:'Summit of Memories',sub:'Mid',category:'Classic',ratingDisplay:'1.50',rating:1.5,order:42},
+      {name:'Tower of Peaceful Happiness and Tranquility (Classic)',abbr:'ToPHaT(C)',group1:'Summit of Memories',sub:'Mid',category:'Classic',ratingDisplay:'1.50',rating:1.5,order:43},
+      {name:'Tower of Funny Thoughts (Classic)',abbr:'ToFT(C)',group1:'Summit of Memories',sub:'High',category:'Classic',ratingDisplay:'1.68',rating:1.68,order:44}
+    ];
+  </script>
+  <script src="../../js/tower-tabs.js"></script>
+  <script>
+    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Easy', realmLabel: 'Organized by Realm' });
+  </script>
 
 </main>
 

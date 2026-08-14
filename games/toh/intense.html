@@ -48,30 +48,168 @@
 
   <section class="section" id="towers">
     <h2>Towers in this tier <span class="tag">150 tracked</span></h2>
-    <p>A spread of intense towers sampled from bottom to peak of the range, so you can see how the tier actually progresses rather than just its edges.</p>
-    <table>
-      <thead>
-        <tr><th>Tower</th><th>Area</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Rings 1-4 Mini Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(R14MTR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of u a <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(Toua)</span></td><td>Events</td><td style="font-family:var(--font-mono);">6.05</td></tr>
-        <tr><td>Tower of Blossoming Nightfall <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToBN)</span></td><td>Dark Side of the Moon</td><td style="font-family:var(--font-mono);">6.17</td></tr>
-        <tr><td>Tower of Tearing Up <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToTU(L))</span></td><td>Events</td><td style="font-family:var(--font-mono);">6.26</td></tr>
-        <tr><td>Tower of Horrifying Experiences <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToHE)</span></td><td>Zone 5</td><td style="font-family:var(--font-mono);">6.33</td></tr>
-        <tr><td>Tower of A Rabbit Hole <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToARH)</span></td><td>Events</td><td style="font-family:var(--font-mono);">6.41</td></tr>
-        <tr><td>Tower of Great Overcomings <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToGO)</span></td><td>Ring 9</td><td style="font-family:var(--font-mono);">6.49</td></tr>
-        <tr><td>Tower of A Disillusioned Existence <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToADE)</span></td><td>The Starlit Archives</td><td style="font-family:var(--font-mono);">6.57</td></tr>
-        <tr><td>Tower of Uneasy Scaling <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToUS)</span></td><td>Ring 8</td><td style="font-family:var(--font-mono);">6.66</td></tr>
-        <tr><td>Tower of Dangerous Expeditions <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToDE)</span></td><td>Forgotten Ridge</td><td style="font-family:var(--font-mono);">6.75</td></tr>
-        <tr><td>Tower of Expecting The Unexpected <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToETU)</span></td><td>Zone 10</td><td style="font-family:var(--font-mono);">6.79</td></tr>
-        <tr><td>Ring 3 Tower Rush <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(R3TR)</span></td><td>Tower Rushes</td><td style="font-family:var(--font-mono);">6.89</td></tr>
-        <tr><td>Citadel of Weird Nostalgia <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(CoWN)</span></td><td>Forgotten Ridge</td><td style="font-family:var(--font-mono);">6.96</td></tr>
-        <tr><td>Tower of Mach Nine <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToMN)</span></td><td>Zone 10</td><td style="font-family:var(--font-mono);">6.99</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:14px;font-size:0.85rem;color:var(--text-dim);">This is a sample, not the full list — 150 intense towers are tracked in total, and ratings shift as towers get revamped or rebalanced.</p>
+    <p>Every tracked intense tower, organized two ways: by the realm it's found in, and by where it sits in the overall difficulty chart (canon, non-canon, monthly, event, classic, or removed).</p>
+    <div id="tower-tabs-mount"></div>
   </section>
+
+  <script>
+    const TOWER_DATA = [
+      {name:'Tower of Impossible Expectations',abbr:'ToIE',group1:'Ring 1',sub:'Bottom',category:'Canon',ratingDisplay:'6.01',rating:6.01,order:0},
+      {name:'Citadel of Laptop Splitting',abbr:'CoLS',group1:'Ring 1',sub:'Mid',category:'Canon',ratingDisplay:'6.50',rating:6.5,order:1},
+      {name:'Steeple of Huge Pain',abbr:'SoHP',group1:'Forgotten Ridge',sub:'Low-Mid',category:'Canon',ratingDisplay:'6.35',rating:6.35,order:2},
+      {name:'Tower of Increasing Stress',abbr:'ToIS',group1:'Forgotten Ridge',sub:'Low-Mid',category:'Canon',ratingDisplay:'6.37',rating:6.37,order:3},
+      {name:'Tower of Dangerous Expeditions',abbr:'ToDE',group1:'Forgotten Ridge',sub:'High',category:'Canon',ratingDisplay:'6.75',rating:6.75,order:4},
+      {name:'Citadel of Weird Nostalgia',abbr:'CoWN',group1:'Forgotten Ridge',sub:'Peak',category:'Canon',ratingDisplay:'6.96',rating:6.96,order:5},
+      {name:'This Is A Tower',abbr:'TIAT',group1:'Time-Lost Clockwork',sub:'Bottom-Low',category:'Canon',ratingDisplay:'6.20',rating:6.2,order:6},
+      {name:'It Really Looks Like a Tower...',abbr:'IRLLAT',group1:'Time-Lost Nexus',sub:'High',category:'Canon',ratingDisplay:'6.68',rating:6.68,order:7},
+      {name:'Citadel of Vigilant Endurance',abbr:'CoVE',group1:'Ring 2',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:8},
+      {name:'Tower of Table Flipping',abbr:'ToTF',group1:'Ring 2',sub:'Low-Mid',category:'Canon',ratingDisplay:'6.44',rating:6.44,order:9},
+      {name:'Tower of Perilous Antipode',abbr:'ToPA',group1:'Garden of Eeshöl',sub:'Baseline',category:'Canon',ratingDisplay:'6.00',rating:6.0,order:10},
+      {name:'Steeple of Buoyant Automations',abbr:'SoBA',group1:'Garden of Eeshöl',sub:'Bottom',category:'Canon',ratingDisplay:'6.03',rating:6.03,order:11},
+      {name:'Citadel of Heights and Depths',abbr:'CoHaD',group1:'Ring 3',sub:'Bottom-Low',category:'Canon',ratingDisplay:'6.13',rating:6.13,order:12},
+      {name:'Totally A Tower',abbr:'TAT',group1:'Ring 3',sub:'Peak',category:'Canon',ratingDisplay:'6.99',rating:6.99,order:13},
+      {name:'Tower of Laptop Snapping',abbr:'ToLS',group1:'Ring 4',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:14},
+      {name:'Citadel of Collaborative Effort',abbr:'CoCE',group1:'Ring 4',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:15},
+      {name:'Tower of Holy Flip',abbr:'ToHF',group1:'Ring 4',sub:'Mid',category:'Canon',ratingDisplay:'6.45',rating:6.45,order:16},
+      {name:'Citadel of Uneasiness',abbr:'CoU',group1:'Ring 4',sub:'High-Peak',category:'Canon',ratingDisplay:'6.80',rating:6.8,order:17},
+      {name:'Tower of Oblivion',abbr:'ToO',group1:'Ring 4',sub:'Peak',category:'Canon',ratingDisplay:'6.97',rating:6.97,order:18},
+      {name:'Steeple of Wicked Grotto',abbr:'SoWG',group1:'Silent Abyss',sub:'Bottom',category:'Canon',ratingDisplay:'6.02',rating:6.02,order:19},
+      {name:'Tower of Shallow Waters',abbr:'ToSW',group1:'Silent Abyss',sub:'Mid-High',category:'Canon',ratingDisplay:'6.64',rating:6.64,order:20},
+      {name:'Steeple of Involuntary Isolation',abbr:'SoII',group1:'Silent Abyss',sub:'High',category:'Canon',ratingDisplay:'6.71',rating:6.71,order:21},
+      {name:'Tower of Tenebrous Depths',abbr:'ToTD',group1:'Silent Abyss',sub:'Peak',category:'Canon',ratingDisplay:'6.90',rating:6.9,order:22},
+      {name:'Tower of Floral Fury',abbr:'ToFF',group1:'Ring 5',sub:'Bottom',category:'Canon',ratingDisplay:'6.05',rating:6.05,order:23},
+      {name:'Tower of Extraordinary Adventures',abbr:'ToEA',group1:'Ring 5',sub:'Bottom-Low',category:'Canon',ratingDisplay:'6.12',rating:6.12,order:24},
+      {name:'Tower of Tokyo Heights',abbr:'ToTH',group1:'Ring 5',sub:'Mid',category:'Canon',ratingDisplay:'6.46',rating:6.46,order:25},
+      {name:'Tower of Witchcraft and Wizardry',abbr:'ToWaW',group1:'Lost River',sub:'High',category:'Canon',ratingDisplay:'6.74',rating:6.74,order:26},
+      {name:'Tower of Compact Spaces',abbr:'ToCS',group1:'Lost River',sub:'Peak',category:'Canon',ratingDisplay:'6.98',rating:6.98,order:27},
+      {name:'Tower of A Depressing Future',abbr:'ToADF',group1:'Ring 6',sub:'Bottom-Low',category:'Canon',ratingDisplay:'6.12',rating:6.12,order:28},
+      {name:'Tower of Intense Solar Chaos',abbr:'ToISC',group1:'Ring 6',sub:'Low',category:'Canon',ratingDisplay:'6.30',rating:6.3,order:29},
+      {name:'Tower of Dispersed Rooms',abbr:'ToDR',group1:'Ring 6',sub:'High',category:'Canon',ratingDisplay:'6.68',rating:6.68,order:30},
+      {name:'Tower of Flustering Sections',abbr:'ToFS',group1:'Ring 6',sub:'High',category:'Canon',ratingDisplay:'6.71',rating:6.71,order:31},
+      {name:'Fortunately Not A Tower',abbr:'FNAT',group1:'Ring 6',sub:'High',category:'Canon',ratingDisplay:'6.76',rating:6.76,order:32},
+      {name:'Tower of Inner and Outer Scaling',abbr:'ToIaOS',group1:'Ring 6',sub:'Peak',category:'Removed',ratingDisplay:'6.89',rating:6.89,order:33},
+      {name:'Tower of Shadowy Radiance',abbr:'ToSR',group1:'Ashen Towerworks',sub:'Bottom',category:'Canon',ratingDisplay:'6.08',rating:6.08,order:34},
+      {name:'Tower of Whisking It All',abbr:'ToWIA',group1:'Ashen Towerworks',sub:'Low',category:'Canon',ratingDisplay:'6.26',rating:6.26,order:35},
+      {name:'Tower of Whirl of Winds',abbr:'ToWoW',group1:'Ashen Towerworks',sub:'Low-Mid',category:'Canon',ratingDisplay:'6.42',rating:6.42,order:36},
+      {name:'Tower of Largely Limited Luminance',abbr:'ToLLL',group1:'Ashen Towerworks',sub:'Mid',category:'Canon',ratingDisplay:'6.55',rating:6.55,order:37},
+      {name:'Tower of Endless Wandering',abbr:'ToEW',group1:'Ring 7',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:38},
+      {name:'Tower of Time Wasting',abbr:'ToTW',group1:'Ring 7',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:39},
+      {name:'Tower of Orientating Oscillating Opinions',abbr:'ToOOO',group1:'Ring 7',sub:'Low',category:'Canon',ratingDisplay:'6.29',rating:6.29,order:40},
+      {name:'Tower of Never Giving Up, Ever',abbr:'ToNGUE',group1:'Ring 7',sub:'Mid',category:'Canon',ratingDisplay:'6.54',rating:6.54,order:41},
+      {name:'Citadel of Constant Heart Stopping',abbr:'CoCHS',group1:'Ring 8',sub:'Mid',category:'Canon',ratingDisplay:'6.49',rating:6.49,order:42},
+      {name:'Tower of Uneasy Scaling',abbr:'ToUS',group1:'Ring 8',sub:'Mid-High',category:'Canon',ratingDisplay:'6.66',rating:6.66,order:43},
+      {name:'Tower of Insanely Innovative Ideas',abbr:'ToIII',group1:'Ring 8',sub:'Peak',category:'Canon',ratingDisplay:'6.99',rating:6.99,order:44},
+      {name:'Tower of The Umbrella, The User',abbr:'ToTUTU',group1:'The Starlit Archives',sub:'Low',category:'Canon',ratingDisplay:'6.32',rating:6.32,order:45},
+      {name:'Tower of Infiltrated Ruins',abbr:'ToIR',group1:'The Starlit Archives',sub:'Low-Mid',category:'Canon',ratingDisplay:'6.36',rating:6.36,order:46},
+      {name:'Steeple of Itsy Bitsy',abbr:'SoIB',group1:'The Starlit Archives',sub:'Low-Mid',category:'Canon',ratingDisplay:'6.40',rating:6.4,order:47},
+      {name:'Tower of A Disillusioned Existence',abbr:'ToADE',group1:'The Starlit Archives',sub:'Mid-High',category:'Canon',ratingDisplay:'6.57',rating:6.57,order:48},
+      {name:'Tower of Warranted Retribution',abbr:'ToWR',group1:'The Starlit Archives',sub:'High',category:'Canon',ratingDisplay:'6.75',rating:6.75,order:49},
+      {name:'Tower of Great Overcomings',abbr:'ToGO',group1:'Ring 9',sub:'Mid',category:'Canon',ratingDisplay:'6.49',rating:6.49,order:50},
+      {name:'Tower of Ultimately Terrifying',abbr:'ToUT',group1:'Zone 1',sub:'Low',category:'Canon',ratingDisplay:'6.23',rating:6.23,order:51},
+      {name:'Tower of Fixture Park',abbr:'ToFP',group1:'Steelspire Horizon',sub:'Low',category:'Canon',ratingDisplay:'6.30',rating:6.3,order:52},
+      {name:'Tower of Nerves of Steel',abbr:'ToNoS',group1:'Steelspire Horizon',sub:'Mid-High',category:'Canon',ratingDisplay:'6.66',rating:6.66,order:53},
+      {name:'Citadel of Treachery',abbr:'CoT',group1:'Steelspire Horizon',sub:'Peak',category:'Canon',ratingDisplay:'6.95',rating:6.95,order:54},
+      {name:'Tower of Just One Box',abbr:'ToJOB',group1:'Zone 2',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:55},
+      {name:'Tower of Basement',abbr:'ToB',group1:'Zone 2',sub:'Bottom-Low',category:'Removed',ratingDisplay:'6.12',rating:6.12,order:56},
+      {name:'Citadel of Green Stuff',abbr:'CoGS',group1:'Zone 2',sub:'Low-Mid',category:'Canon',ratingDisplay:'6.39',rating:6.39,order:57},
+      {name:'Tower of Extraterrestrial Enchantment',abbr:'ToEE',group1:'Zone 2',sub:'Mid',category:'Canon',ratingDisplay:'6.49',rating:6.49,order:58},
+      {name:'Tower of Arcanium Zenturing',abbr:'ToAZ',group1:'Zone 2',sub:'High',category:'Canon',ratingDisplay:'6.76',rating:6.76,order:59},
+      {name:'Citadel of True Darkness (removed/scrapped)',abbr:'CoTD',group1:'Zone 2',sub:'High-Peak',category:'Canon',ratingDisplay:'6.78',rating:6.78,order:60},
+      {name:'Tower of Triangular Terror',abbr:'ToTT',group1:'Zone 2',sub:'Peak',category:'Canon',ratingDisplay:'6.98',rating:6.98,order:61},
+      {name:'Steeple of Magical Collaborations',abbr:'SoMC',group1:'Arcane Area',sub:'Bottom-Low',category:'Canon',ratingDisplay:'6.22',rating:6.22,order:62},
+      {name:'Tower of Main Five Elements',abbr:'ToMFE',group1:'Arcane Area',sub:'Peak',category:'Removed',ratingDisplay:'6.89',rating:6.89,order:63},
+      {name:'Tower of Impossible Reversal',abbr:'ToIR',group1:'Zone 3',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:64},
+      {name:'Tower of Quirky Contraptions',abbr:'ToQC',group1:'Zone 3',sub:'Bottom-Low',category:'Canon',ratingDisplay:'6.18',rating:6.18,order:65},
+      {name:'Tower of Infuriating Obstacles',abbr:'ToIO',group1:'Zone 3',sub:'Low',category:'Canon',ratingDisplay:'6.32',rating:6.32,order:66},
+      {name:'Tower of Cruel and Unusual Punishment',abbr:'ToCaUP',group1:'Zone 3',sub:'Mid',category:'Canon',ratingDisplay:'6.46',rating:6.46,order:67},
+      {name:'Tower of Traversing The Tropics',abbr:'ToTTT',group1:'Paradise Atoll',sub:'Bottom',category:'Canon',ratingDisplay:'6.06',rating:6.06,order:68},
+      {name:'Steeple of Dusty Dunes',abbr:'SoDD',group1:'Paradise Atoll',sub:'Low',category:'Canon',ratingDisplay:'6.32',rating:6.32,order:69},
+      {name:'Steeple of Underlying Breezes',abbr:'SoUB',group1:'Paradise Atoll',sub:'Mid',category:'Canon',ratingDisplay:'6.54',rating:6.54,order:70},
+      {name:'Tower of Mechanically Induced Mayhem',abbr:'ToMIM',group1:'Zone 4',sub:'Bottom',category:'Canon',ratingDisplay:'6.02',rating:6.02,order:71},
+      {name:'Tower of Shifting Slopes',abbr:'ToSS',group1:'Zone 4',sub:'High-Peak',category:'Canon',ratingDisplay:'6.80',rating:6.8,order:72},
+      {name:'Tower of Heiwana Kaze',abbr:'ToHK',group1:'Zone 5',sub:'Low',category:'Canon',ratingDisplay:'6.33',rating:6.33,order:73},
+      {name:'Tower of Horrifying Experiences',abbr:'ToHE',group1:'Zone 5',sub:'Low',category:'Canon',ratingDisplay:'6.33',rating:6.33,order:74},
+      {name:'Tower of Guided Trials',abbr:'ToGT',group1:'Zone 5',sub:'Mid',category:'Canon',ratingDisplay:'6.52',rating:6.52,order:75},
+      {name:'Citadel of Corporate Enterprise',abbr:'CoCE',group1:'Zone 5',sub:'High-Peak',category:'Canon',ratingDisplay:'6.79',rating:6.79,order:76},
+      {name:'Tower of Anticlimactic Outcomes',abbr:'ToAO',group1:'Zone 5',sub:'Peak',category:'Canon',ratingDisplay:'6.96',rating:6.96,order:77},
+      {name:'Tower of Blossoming Nightfall',abbr:'ToBN',group1:'Dark Side of the Moon',sub:'Bottom-Low',category:'Canon',ratingDisplay:'6.17',rating:6.17,order:78},
+      {name:'Tower of Kieru Taiyo',abbr:'ToKT',group1:'Dark Side of the Moon',sub:'Mid-High',category:'Canon',ratingDisplay:'6.63',rating:6.63,order:79},
+      {name:'Tower of Incoming Danger',abbr:'ToID',group1:'Dark Side of the Moon',sub:'Mid-High',category:'Canon',ratingDisplay:'6.64',rating:6.64,order:80},
+      {name:'Citadel of Twists and Weirdness',abbr:'CoTaW',group1:'Zone 6',sub:'Bottom',category:'Canon',ratingDisplay:'6.06',rating:6.06,order:81},
+      {name:'Tower of Hazardous Laddering',abbr:'ToHL',group1:'Zone 6',sub:'Low',category:'Canon',ratingDisplay:'6.25',rating:6.25,order:82},
+      {name:'Tower of Watts',abbr:'ToW',group1:'Zone 6',sub:'Low-Mid',category:'Canon',ratingDisplay:'6.40',rating:6.4,order:83},
+      {name:'Tower of Yore',abbr:'ToY',group1:'Zone 7',sub:'Low',category:'Canon',ratingDisplay:'6.27',rating:6.27,order:84},
+      {name:'Tower of Cone Mesh Climbing',abbr:'ToCMC',group1:'Zone 7',sub:'Mid',category:'Canon',ratingDisplay:'6.48',rating:6.48,order:85},
+      {name:'Tower of Swift and Precise Sections',abbr:'ToSaPS',group1:'Zone 7',sub:'High-Peak',category:'Canon',ratingDisplay:'6.78',rating:6.78,order:86},
+      {name:'Tower of One Nine',abbr:'ToON',group1:'Zone 8',sub:'Low',category:'Canon',ratingDisplay:'6.33',rating:6.33,order:87},
+      {name:'Tower of Never Ending Fun',abbr:'ToNEF',group1:'Zone 8',sub:'Mid-High',category:'Canon',ratingDisplay:'6.65',rating:6.65,order:88},
+      {name:'Tower of Manic Lows',abbr:'ToML',group1:'Zone 8',sub:'High-Peak',category:'Canon',ratingDisplay:'6.78',rating:6.78,order:89},
+      {name:'Tower of Sugar Rush Deluxe',abbr:'ToSRD',group1:'Zone 9',sub:'Bottom',category:'Canon',ratingDisplay:'6.01',rating:6.01,order:90},
+      {name:'Tower of Nothing New',abbr:'ToNN',group1:'Zone 9',sub:'High',category:'Canon',ratingDisplay:'6.73',rating:6.73,order:91},
+      {name:'Tower of Furious Chicken Brawl',abbr:'ToFCB',group1:'Zone 9',sub:'High-Peak',category:'Canon',ratingDisplay:'6.86',rating:6.86,order:92},
+      {name:'Tower of Falling Up',abbr:'ToFU',group1:'Zone 9',sub:'Peak',category:'Canon',ratingDisplay:'6.93',rating:6.93,order:93},
+      {name:'Tower of Expecting The Unexpected',abbr:'ToETU',group1:'Zone 10',sub:'High-Peak',category:'Canon',ratingDisplay:'6.79',rating:6.79,order:94},
+      {name:'Tower of Mach Nine',abbr:'ToMN',group1:'Zone 10',sub:'Peak',category:'Canon',ratingDisplay:'6.99',rating:6.99,order:95},
+      {name:'Steeple of Midnight Terrors',abbr:'SoMT',group1:'Events',sub:'Peak',category:'Event',ratingDisplay:'6.90',rating:6.9,order:96},
+      {name:'Steeple of Pumpkin Panic',abbr:'SoPP',group1:'Events',sub:'Mid',category:'Event',ratingDisplay:'6.45',rating:6.45,order:97},
+      {name:'Steeple of Cosmic Terror',abbr:'SoCT',group1:'Events',sub:'Mid-High',category:'Event',ratingDisplay:'6.56',rating:6.56,order:98},
+      {name:'Tower of u a',abbr:'Toua',group1:'Events',sub:'Bottom',category:'Event',ratingDisplay:'6.05',rating:6.05,order:99},
+      {name:'Thankfully Not A Tower',abbr:'TNAT',group1:'Events',sub:'Unrated',category:'Removed',ratingDisplay:'—',rating:null,order:100},
+      {name:'Citadel of "A Bug\'s Life!"',abbr:'CoABL',group1:'Events',sub:'Peak',category:'Event',ratingDisplay:'6.94',rating:6.94,order:101},
+      {name:'Steeple of Moonlit Heresy',abbr:'SoMH',group1:'Events',sub:'Low-Mid',category:'Event',ratingDisplay:'6.42',rating:6.42,order:102},
+      {name:'Steeple of Triple Black Diamonds',abbr:'SoTBD',group1:'Events',sub:'Bottom',category:'Event',ratingDisplay:'6.07',rating:6.07,order:103},
+      {name:'Tower of Quick, Brown Fox!',abbr:'ToQBF',group1:'Events',sub:'Bottom',category:'Event',ratingDisplay:'6.02',rating:6.02,order:104},
+      {name:'Tower of The Conscious Fallacy',abbr:'ToTCF',group1:'Events',sub:'Peak',category:'Event',ratingDisplay:'6.95',rating:6.95,order:105},
+      {name:'Tower of Tearing Up',abbr:'ToTU(L)',group1:'Events',sub:'Low',category:'Removed',ratingDisplay:'6.26',rating:6.26,order:106},
+      {name:'Tower of Great Infamy',abbr:'ToGI(L)',group1:'Events',sub:'High-Peak',category:'Removed',ratingDisplay:'6.78',rating:6.78,order:107},
+      {name:'100M Finale',abbr:'100MF',group1:'Events',sub:'Mid',category:'Event',ratingDisplay:'6.52',rating:6.52,order:108},
+      {name:'Steeple of Psycho Eyes',abbr:'SoPE',group1:'Events',sub:'Low',category:'Event',ratingDisplay:'6.28',rating:6.28,order:109},
+      {name:'Double Tower 2',abbr:'DT2',group1:'Events',sub:'Bottom',category:'Removed',ratingDisplay:'6.03',rating:6.03,order:110},
+      {name:'Tower of Not Like Us',abbr:'ToNLU',group1:'Events',sub:'High',category:'Event',ratingDisplay:'6.69',rating:6.69,order:111},
+      {name:'Wasn\'t Really A Tower, Honestly',abbr:'WRATH',group1:'Events',sub:'Peak',category:'Event',ratingDisplay:'6.97',rating:6.97,order:112},
+      {name:'Shrimply Another Normal Tower, Amazingly',abbr:'SANTA',group1:'Events',sub:'Bottom-Low',category:'Event',ratingDisplay:'6.12',rating:6.12,order:113},
+      {name:'Tower of A Rabbit Hole',abbr:'ToARH',group1:'Events',sub:'Low-Mid',category:'Event',ratingDisplay:'6.41',rating:6.41,order:114},
+      {name:'Tower of Stained, Brutal Calamity',abbr:'ToSBC(M)',group1:'Monthly Challenge Towers',sub:'Low-Mid',category:'Monthly',ratingDisplay:'6.36',rating:6.36,order:115},
+      {name:'Peak Intense (6.93)',abbr:'ToTEP(M)- Tower of Truly Extensive Pillars',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'6.93',rating:6.93,order:116},
+      {name:'Tower of Celestial Darkness',abbr:'ToCD(M)',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'6.89',rating:6.89,order:117},
+      {name:'Tower of Disjointed Worlds',abbr:'ToDW(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'6.79',rating:6.79,order:118},
+      {name:'Tower of Unfaithful Great Heights',abbr:'ToUGH(M)',group1:'Monthly Challenge Towers',sub:'High',category:'Monthly',ratingDisplay:'6.71',rating:6.71,order:119},
+      {name:'Tower of Fast Acceleration',abbr:'ToFA(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'6.78',rating:6.78,order:120},
+      {name:'Tower of Onerous Traversing',abbr:'ToOT(M)',group1:'Monthly Challenge Towers',sub:'Low',category:'Monthly',ratingDisplay:'6.32',rating:6.32,order:121},
+      {name:'Tower of Violet Contradiction',abbr:'ToVC(M)',group1:'Monthly Challenge Towers',sub:'Mid-High',category:'Monthly',ratingDisplay:'6.61',rating:6.61,order:122},
+      {name:'Tower of Stalactite Boundaries',abbr:'ToSB(M)',group1:'Monthly Challenge Towers',sub:'Mid-High',category:'Monthly',ratingDisplay:'6.57',rating:6.57,order:123},
+      {name:'Tower of Frozen Uplift',abbr:'ToFU(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'6.87',rating:6.87,order:124},
+      {name:'Steeple of The Deep Well',abbr:'SoTDW(M)',group1:'Monthly Challenge Towers',sub:'Bottom',category:'Monthly',ratingDisplay:'6.05',rating:6.05,order:125},
+      {name:'Tower of Scaling The Pillar',abbr:'ToSTP(M)',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'6.96',rating:6.96,order:126},
+      {name:'Tower of Nothing Much',abbr:'ToNM(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'6.85',rating:6.85,order:127},
+      {name:'Tower of Vibing',abbr:'ToV(M)',group1:'Monthly Challenge Towers',sub:'Bottom',category:'Monthly',ratingDisplay:'6.04',rating:6.04,order:128},
+      {name:'Tower of Diving Into Madness',abbr:'ToDIM(M)',group1:'Monthly Challenge Towers',sub:'Low',category:'Monthly',ratingDisplay:'6.33',rating:6.33,order:129},
+      {name:'Tower of Concealed Visions',abbr:'ToCV(M)',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'6.94',rating:6.94,order:130},
+      {name:'Tower of Taking a Seat',abbr:'ToTaS(M)',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'6.97',rating:6.97,order:131},
+      {name:'Citadel of Malice',abbr:'CoM(M)',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'6.94',rating:6.94,order:132},
+      {name:'Tower of Gates To Infinity',abbr:'ToGTI(M)',group1:'Monthly Challenge Towers',sub:'Mid-High',category:'Monthly',ratingDisplay:'6.61',rating:6.61,order:133},
+      {name:'Tower of Pure Exasperation',abbr:'ToPE(M)',group1:'Monthly Challenge Towers',sub:'Mid',category:'Monthly',ratingDisplay:'6.49',rating:6.49,order:134},
+      {name:'Tower of Good Morning, Let\'s Basketball',abbr:'ToGMLB(M)',group1:'Monthly Challenge Towers',sub:'Low',category:'Monthly',ratingDisplay:'6.25',rating:6.25,order:135},
+      {name:'Tower of Ashen Inferno',abbr:'ToAI(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'6.84',rating:6.84,order:136},
+      {name:'Tower of Laptop Snapping',abbr:'ToLS(M)',group1:'Monthly Challenge Towers',sub:'High',category:'Monthly',ratingDisplay:'6.77',rating:6.77,order:137},
+      {name:'Tower of The Temporal Curse',abbr:'ToTTC(M)',group1:'Monthly Challenge Towers',sub:'Bottom-Low',category:'Monthly',ratingDisplay:'6.20',rating:6.2,order:138},
+      {name:'Citadel of Snail Mountain',abbr:'CoSM(M)',group1:'Monthly Challenge Towers',sub:'High-Peak',category:'Monthly',ratingDisplay:'6.85',rating:6.85,order:139},
+      {name:'Tower of Idiot World',abbr:'ToIW(M)',group1:'Monthly Challenge Towers',sub:'Mid-High',category:'Monthly',ratingDisplay:'6.58',rating:6.58,order:140},
+      {name:'Tower of Two Cornered Coolness',abbr:'ToTCC(M)',group1:'Monthly Challenge Towers',sub:'Bottom',category:'Monthly',ratingDisplay:'6.10',rating:6.1,order:141},
+      {name:'Tower of Inclining Floors',abbr:'ToIF(M)',group1:'Monthly Challenge Towers',sub:'Peak',category:'Monthly',ratingDisplay:'6.95',rating:6.95,order:142},
+      {name:'Steeple of Dusty Dunes (Classic)',abbr:'SoDD(C)',group1:'Summit of Memories',sub:'Bottom-Low',category:'Classic',ratingDisplay:'6.19',rating:6.19,order:143},
+      {name:'Citadel of Green Stuff (Classic)',abbr:'CoGS(C)',group1:'Summit of Memories',sub:'Low-Mid',category:'Classic',ratingDisplay:'6.44',rating:6.44,order:144},
+      {name:'Tower of Ultimately Terrifying (Classic)',abbr:'ToUT(C)',group1:'Summit of Memories',sub:'Mid-High',category:'Classic',ratingDisplay:'6.58',rating:6.58,order:145},
+      {name:'Citadel of Weird Nostalgia (Classic)',abbr:'CoWN(C)',group1:'Summit of Memories',sub:'High',category:'Classic',ratingDisplay:'6.77',rating:6.77,order:146},
+      {name:'Rings 1-4 Mini Tower Rush',abbr:'R14MTR',group1:'Tower Rushes',sub:'Unrated',category:'Canon',ratingDisplay:'—',rating:null,order:147},
+      {name:'Garden of Eeshöl Tower Rush',abbr:'GoETR',group1:'Tower Rushes',sub:'Mid-High',category:'Canon',ratingDisplay:'6.62',rating:6.62,order:148},
+      {name:'Ring 3 Tower Rush',abbr:'R3TR',group1:'Tower Rushes',sub:'Peak',category:'Canon',ratingDisplay:'6.89',rating:6.89,order:149}
+    ];
+  </script>
+  <script src="../../js/tower-tabs.js"></script>
+  <script>
+    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Intense', realmLabel: 'Organized by Realm' });
+  </script>
 
 </main>
 

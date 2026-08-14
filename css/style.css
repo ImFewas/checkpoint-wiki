@@ -466,6 +466,144 @@ th {
   color: var(--accent);
 }
 
+/* ---------- Tower tab groups ---------- */
+.tabgroup {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-top: 22px;
+  overflow: hidden;
+}
+.tabgroup-head {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+.tabgroup-head .tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 400;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.tabrow {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  padding: 0 10px;
+  background: var(--surface-2);
+  scrollbar-width: thin;
+}
+.tabrow::-webkit-scrollbar {
+  height: 5px;
+}
+.tabrow::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.tabbtn {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 12px 14px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tabbtn:hover {
+  color: var(--text);
+}
+.tabbtn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+.tabpanel {
+  display: none;
+  padding: 18px 22px 22px;
+}
+.tabpanel.active {
+  display: block;
+}
+.tabpanel-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tower-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tower-list li {
+  padding: 7px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.92rem;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tower-list li:last-child {
+  border-bottom: none;
+}
+.tower-list .r-icon {
+  flex-shrink: 0;
+  font-size: 0.85em;
+  color: var(--accent);
+  opacity: 0.85;
+}
+.tower-list .t-abbr {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.tower-list .t-name {
+  color: var(--text);
+}
+.tower-list .t-sub {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+.tower-list .t-rating {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.tabpanel .empty-note {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ---------- Lore block (game hub intro) ---------- */
+.lore-block {
+  margin-top: 18px;
+  color: var(--text-dim);
+  font-size: 0.98rem;
+  max-width: 72ch;
+}
+.lore-block p {
+  margin: 0 0 14px;
+}
+.lore-block a {
+  color: var(--accent);
+}
+
 /* ---------- Footer ---------- */
 footer {
   border-top: 1px solid var(--border);

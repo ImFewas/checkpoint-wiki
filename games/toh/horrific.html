@@ -48,30 +48,169 @@
 
   <section class="section" id="towers">
     <h2>Towers in this tier <span class="tag">151 tracked</span></h2>
-    <p>A spread of horrific towers sampled from bottom to peak of the range, so you can see how the tier actually progresses rather than just its edges.</p>
-    <table>
-      <thead>
-        <tr><th>Tower</th><th>Area</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Tower of Thje Wall (Baseline Horrific, 12.00) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToTW)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Hollow Irridescences (Bottom Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToHI)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Citadel of Bread (Bottom Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(CoB)</span></td><td>Unverified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower Of Microsoft Service (Bottom-Low Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(TOMS)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Existential Crisis: Super Nerf (Low Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToEC:SN)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Not even a Great Citadel of Difficulty Chart (Low Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(NeaGCoDC)</span></td><td>Unverified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Eternal Doom (Low-Mid Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToED)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Weird Core (Mid Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToWC)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Lavender Lustre (Mid Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToLL)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Luminous Reflections <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToLR)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Infuriating Exasperation <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToIE)</span></td><td>Unclassified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Substantial Quietus (Mid-High Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToSQ)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>Tower of Light Speed Buttons (High Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(ToLSB)</span></td><td>Verified</td><td style="font-family:var(--font-mono);">—</td></tr>
-        <tr><td>chomk (Peak Horrific) <span style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.78rem;">(c)</span></td><td>Unverified</td><td style="font-family:var(--font-mono);">—</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:14px;font-size:0.85rem;color:var(--text-dim);">This is a sample, not the full list — 151 horrific towers are tracked in total, and ratings shift as towers get revamped or rebalanced.</p>
+    <p>Every tracked horrific tower, organized two ways: by the realm it's found in, and by where it sits in the overall difficulty chart (canon, non-canon, monthly, event, classic, or removed).</p>
+    <div id="tower-tabs-mount"></div>
   </section>
+
+  <script>
+    const TOWER_DATA = [
+      {name:'Tower of Thje Wall',abbr:'ToTW',group1:'Verified',sub:'Baseline',category:'Non-Canon',ratingDisplay:'12.00',rating:12.0,order:0},
+      {name:'Tower of Timed Button Fury',abbr:'ToTBF',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:1},
+      {name:'Tower of Incessant Vexation',abbr:'ToIV',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:2},
+      {name:'Europapa Tower',abbr:'ET',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:3},
+      {name:'Tower of Fragile Balance',abbr:'ToFB',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:4},
+      {name:'Tower of Nebulaic Remnants',abbr:'ToNR',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:5},
+      {name:'Tower of The Homefinder',abbr:'ToTH',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:6},
+      {name:'Tower of The Quest for Perfection',abbr:'ToTQFP',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:7},
+      {name:'Tower of Winner\'s Pad',abbr:'ToWP',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:8},
+      {name:'Steeple of Cheese Burger',abbr:'SoCB',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:9},
+      {name:'Steeple of Pit of Misery Soul Crushing+',abbr:'SoPoMSC',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:10},
+      {name:'Citadel of Vacant Hindrances',abbr:'CoVH',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:11},
+      {name:'Tower of Hollow Irridescences',abbr:'ToHI',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:12},
+      {name:'Tower of small pillars',abbr:'Tosp',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:13},
+      {name:'Tower of Corrupted Zenith',abbr:'ToCZ',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:14},
+      {name:'Tower of Venerated Attrition',abbr:'ToVA',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:15},
+      {name:'Tower of Elysian Crossings',abbr:'ToEC',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:16},
+      {name:'Tower of Malefic Nuisances',abbr:'ToMN',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:17},
+      {name:'Tower of Technical Requirements',abbr:'ToTR',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:18},
+      {name:'Tower of Mental Torture',abbr:'ToMT',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:19},
+      {name:'Tower of Devious Purism',abbr:'ToDP',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:20},
+      {name:'Corner Tower',abbr:'CT',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:21},
+      {name:'Tower of Gtg House On Fire',abbr:'ToGHOF',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:22},
+      {name:'Tower of Grey Scary Aaa',abbr:'ToGSA',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:23},
+      {name:'Tower of Futile Perusal',abbr:'ToFP',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:24},
+      {name:'Doomsday Tower',abbr:'DT',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:25},
+      {name:'Tower of Subsequent Comprises',abbr:'ToSC',group1:'Verified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:26},
+      {name:'Tower of The Ice Wall',abbr:'ToTIW',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:27},
+      {name:'Tower of Italianray Never Clear',abbr:'ToINC',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:28},
+      {name:'Cone Tower',abbr:'CT',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:29},
+      {name:'Tower of Hollow Obstacles',abbr:'ToHO',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:30},
+      {name:'Tower Of Microsoft Service',abbr:'TOMS',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:31},
+      {name:'Tower of The Altruistic Serosity',abbr:'ToTAS',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:32},
+      {name:'Tower of Truss Behemoth',abbr:'ToTB',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:33},
+      {name:'Tower of Who Moved My Camera',abbr:'ToWMMC',group1:'Verified',sub:'Bottom-Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:34},
+      {name:'Great Citadel of Difficulty Chart: Classic',abbr:'GCoDC:C',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:35},
+      {name:'Tower of The Bussin',abbr:'ToTB',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:36},
+      {name:'Tower of Absolute Zero',abbr:'ToAZ',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:37},
+      {name:'Tower of Gridlock Madness',abbr:'ToGM',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:38},
+      {name:'Tower of pro pillars',abbr:'Topp',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:39},
+      {name:'Tower of Brief Enmity',abbr:'ToBE',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:40},
+      {name:'Tower of Familiar Voids',abbr:'ToFV',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:41},
+      {name:'Tower of Existential Crisis: Super Nerf',abbr:'ToEC:SN',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:42},
+      {name:'Byung Jin Rae',abbr:'BJR',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:43},
+      {name:'Tower of Corruption\'s Embrace',abbr:'ToCE',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:44},
+      {name:'Tower of Spatial Awareness',abbr:'ToSA',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:45},
+      {name:'Tower of My Eternal Destination',abbr:'ToMED',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:46},
+      {name:'Tower of Virescent Cascade',abbr:'ToVC',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:47},
+      {name:'Tower of Living Life to the Fullest',abbr:'ToLLttF',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:48},
+      {name:'Tower of Greyscale',abbr:'ToG',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:49},
+      {name:'Tower of Quiescent Spiralism',abbr:'ToQS',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:50},
+      {name:'Tower of Disturbing Dread',abbr:'ToDD',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:51},
+      {name:'Steeple of Cha Cha Real Smooth',abbr:'SoCCRM',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:52},
+      {name:'Tower of Water Melon',abbr:'ToWM',group1:'Verified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:53},
+      {name:'Steeple of Nilly Bob',abbr:'SoNB',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:54},
+      {name:'Citadel of Cruel Punishment',abbr:'CoCP',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:55},
+      {name:'Tower of Wigglecore: Classic',abbr:'ToW:C',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:56},
+      {name:'Tower of Luminous Reflections',abbr:'ToLR',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:57},
+      {name:'Tower of The Horizontal Wall',abbr:'ToTHW',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:58},
+      {name:'Tower of Flagrant Aggravation',abbr:'ToFA',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:59},
+      {name:'Tower of Lucas Penteado',abbr:'ToLP',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:60},
+      {name:'Tower of Eternal Doom',abbr:'ToED',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:61},
+      {name:'Tower of Vital Valiance',abbr:'ToVV',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:62},
+      {name:'Tower of Overhanging Obstacles',abbr:'ToOO',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:63},
+      {name:'Tower of The Sky\'s The Limit',abbr:'ToTSTL',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:64},
+      {name:'Tower of Vynn Crael',abbr:'ToVC',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:65},
+      {name:'Tower of Descending Towards Oblivion',abbr:'ToDTO',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:66},
+      {name:'Tower of Zettai-Tekina',abbr:'ToZT',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:67},
+      {name:'Steeple of Transcendence',abbr:'SoT',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:68},
+      {name:'Tower of Exhausting Journey',abbr:'ToEJ',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:69},
+      {name:'Tower of Prismal Radiance',abbr:'ToPR',group1:'Verified',sub:'Low-Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:70},
+      {name:'Steeple of Daze',abbr:'SoD',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:71},
+      {name:'Tower of Reborn Vertigo',abbr:'ToRV',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:72},
+      {name:'Tower of Weird Core',abbr:'ToWC',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:73},
+      {name:'Tower of Flowing Haze',abbr:'ToFH',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:74},
+      {name:'Nvidia Tower',abbr:'NT',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:75},
+      {name:'Sans Steeple',abbr:'SS',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:76},
+      {name:'Tower of Luminous Reflections',abbr:'ToLR',group1:'Verified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:77},
+      {name:'Tower of Disjointed Alliance',abbr:'ToDA',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:78},
+      {name:'Tower of Drifting Nights',abbr:'ToDN',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:79},
+      {name:'Tower of Diabolical Corner Multitude',abbr:'ToDCM',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:80},
+      {name:'Tower of Quite Devious',abbr:'ToQD',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:81},
+      {name:'Tower of Sinful Calvary',abbr:'ToSC',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:82},
+      {name:'Tower of Thje Floor',abbr:'ToTF',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'12.50',rating:12.5,order:83},
+      {name:'Tower of Impressions of a Lunatic',abbr:'ToIoaL',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:84},
+      {name:'Tower of Lavender Lustre',abbr:'ToLL',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:85},
+      {name:'Found You Tower',abbr:'FYT',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:86},
+      {name:'Tower of Dense Beauty',abbr:'ToDB',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:87},
+      {name:'Tower of The Roof\'s Pique',abbr:'ToTRP',group1:'Verified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:88},
+      {name:'Tower of The Roof\'s Pique: Unnerfed',abbr:'ToTRP:U',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:89},
+      {name:'Tower of Compromised Fear',abbr:'ToCF',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:90},
+      {name:'Tower of The Curve\'s Desire',abbr:'ToTCD',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:91},
+      {name:'Tower of Eternal Distress',abbr:'ToED',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:92},
+      {name:'Tower of Splice Construct',abbr:'ToSC',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:93},
+      {name:'Tower of Zither Harmony',abbr:'ToZH',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:94},
+      {name:'Tower of Overwhelming Doom',abbr:'ToOD',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:95},
+      {name:'Tower of Spiritual Rise',abbr:'ToSR',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:96},
+      {name:'Tower of Vague Luminescence',abbr:'ToVL',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:97},
+      {name:'Tower of Suq Aleumra',abbr:'ToSA',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:98},
+      {name:'Tower of Substantial Quietus',abbr:'ToSQ',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:99},
+      {name:'Tower of Eternal Void',abbr:'ToEV',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:100},
+      {name:'Tower of Inferno Galore: Unnerfed',abbr:'ToIG:U',group1:'Verified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:101},
+      {name:'Tower of Where are You Going',abbr:'ToWaYG',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:102},
+      {name:'Tower of Jaded Compromise',abbr:'ToJC',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:103},
+      {name:'Tower of Lucid Nightmares',abbr:'ToLN',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:104},
+      {name:'Tower of Computer Crippling',abbr:'ToCC',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:105},
+      {name:'Tower of Stardust Conflagration',abbr:'ToSC',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:106},
+      {name:'Tower of Dissociative Force',abbr:'ToDF',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'12.75',rating:12.75,order:107},
+      {name:'Tower of Light Speed Buttons',abbr:'ToLSB',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:108},
+      {name:'Zalgo Annihilated Purgatory',abbr:'ZAP',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:109},
+      {name:'Tower of Ruthless Retribution',abbr:'ToRR',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:110},
+      {name:'Tower of Head Quarters',abbr:'ToHQ',group1:'Verified',sub:'High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:111},
+      {name:'Tower of Sudden Death: Classic',abbr:'ToSD:C',group1:'Verified',sub:'High-Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:112},
+      {name:'Tower of Yasamsal Kiyamet',abbr:'ToYK',group1:'Verified',sub:'High-Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:113},
+      {name:'Citadel of The Final Destination',abbr:'CoTFD',group1:'Verified',sub:'High-Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:114},
+      {name:'Great Citadel of Great Difficulty Chart',abbr:'GCoGDC',group1:'Verified',sub:'Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:115},
+      {name:'Citadel of Bread',abbr:'CoB',group1:'Unverified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:116},
+      {name:'Steeple of Peach Vomit',abbr:'SoPV',group1:'Unverified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:117},
+      {name:'Impossible Tower',abbr:'IT',group1:'Unverified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:118},
+      {name:'Tower of Hanging Solicitude',abbr:'ToHS',group1:'Unverified',sub:'Bottom',category:'Non-Canon',ratingDisplay:'—',rating:null,order:119},
+      {name:'Not even a Great Citadel of Difficulty Chart',abbr:'NeaGCoDC',group1:'Unverified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:120},
+      {name:'Tower of Short Venture',abbr:'ToSV',group1:'Unverified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:121},
+      {name:'MELON Facility',abbr:'MELON',group1:'Unverified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:122},
+      {name:'Tower of How To It_Nice',abbr:'ToHTI',group1:'Unverified',sub:'Low',category:'Non-Canon',ratingDisplay:'—',rating:null,order:123},
+      {name:'Steeple of Evil Jank',abbr:'SoEJ',group1:'Unverified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:124},
+      {name:'Tower of Jank Food',abbr:'ToJF',group1:'Unverified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:125},
+      {name:'Tower of Dust',abbr:'ToD',group1:'Unverified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:126},
+      {name:'Certifiably Odd Obnoxious Liquefication',abbr:'COOL',group1:'Unverified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:127},
+      {name:'Citadel of Unlimited Void',abbr:'CoUV',group1:'Unverified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:128},
+      {name:'Citadel of Circo Dei Bimbi [List Version]',abbr:'CoCDB',group1:'Unverified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:129},
+      {name:'The Absolute Centurial',abbr:'TAC',group1:'Unverified',sub:'Mid',category:'Non-Canon',ratingDisplay:'—',rating:null,order:130},
+      {name:'Tower of Holding Back Tears',abbr:'ToHBT',group1:'Unverified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:131},
+      {name:'Tower of Bargain Bonanza',abbr:'ToBB',group1:'Unverified',sub:'Mid-High',category:'Non-Canon',ratingDisplay:'—',rating:null,order:132},
+      {name:'Tower of Deadly Fails',abbr:'ToDF',group1:'Unverified',sub:'Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:133},
+      {name:'Tower of Thje Roof',abbr:'ToTR',group1:'Unverified',sub:'Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:134},
+      {name:'Citadel of Everlasting Isles',abbr:'CoEI',group1:'Unverified',sub:'Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:135},
+      {name:'METaL Facility: Revamp',abbr:'METaL:R',group1:'Unverified',sub:'Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:136},
+      {name:'chomk',abbr:'c',group1:'Unverified',sub:'Peak',category:'Non-Canon',ratingDisplay:'—',rating:null,order:137},
+      {name:'The Great Obelisk HorrificUnreal',abbr:'TGO',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:138},
+      {name:'Tower of Middle Play HorrificUnreal',abbr:'ToMP',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:139},
+      {name:'Greninja Tower HorrificUnreal',abbr:'GT',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:140},
+      {name:'Tower of Central Scaling (Under question) HorrificExtreme',abbr:'ToCS',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:141},
+      {name:'Tower of Slope Hotdog',abbr:'ToSH',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:142},
+      {name:'Tower of Tedious and Stodgy',abbr:'ToTaS',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:143},
+      {name:'Tower of Heavenly Ascension',abbr:'ToHA',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:144},
+      {name:'Forgotten Tower 1',abbr:'FT1',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:145},
+      {name:'Epic Tower',abbr:'ET',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:146},
+      {name:'Finland Tower',abbr:'FT',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:147},
+      {name:'Tower of Final Inferno',abbr:'ToFI',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:148},
+      {name:'Tower of Infuriating Exasperation',abbr:'ToIE',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:149},
+      {name:'Scorionik 4',abbr:'S4',group1:'Unclassified',sub:'Unrated',category:'Non-Canon',ratingDisplay:'—',rating:null,order:150}
+    ];
+  </script>
+  <script src="../../js/tower-tabs.js"></script>
+  <script>
+    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Horrific', realmLabel: 'Organized by Verification Status' });
+  </script>
 
 </main>
 
