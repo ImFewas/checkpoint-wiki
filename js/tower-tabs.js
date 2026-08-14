@@ -81,17 +81,21 @@ function renderTowerTabs(mountId, data, opts) {
     </div>`;
   }).join("");
 
+  const catGroupHtml = opts.hideDifficultyChartTab ? "" : `
+    <div class="tabgroup">
+      <div class="tabgroup-head">Towers in this difficulty <span class="tag">organized by position in the Difficulty Chart</span></div>
+      ${catTabsHtml}
+      ${catPanelsHtml}
+    </div>
+  `;
+
   mount.innerHTML = `
     <div class="tabgroup">
       <div class="tabgroup-head">Towers in this difficulty <span class="tag">${realmLabel}</span></div>
       ${realmTabsHtml}
       ${realmPanelsHtml}
     </div>
-    <div class="tabgroup">
-      <div class="tabgroup-head">Towers in this difficulty <span class="tag">organized by position in the Difficulty Chart</span></div>
-      ${catTabsHtml}
-      ${catPanelsHtml}
-    </div>
+    ${catGroupHtml}
   `;
 
   mount.querySelectorAll(".tabgroup").forEach(group => {

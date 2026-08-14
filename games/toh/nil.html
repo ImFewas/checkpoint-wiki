@@ -48,7 +48,7 @@
 
   <section class="section" id="towers">
     <h2>Towers in this tier <span class="tag">38 tracked</span></h2>
-    <p>Every tracked nil tower. Since none of them have a realm, rating, or confirmed category yet, they're listed together rather than split into tabs by realm — the category tabs below still apply where a tower's naming gives it away (classic, monthly, etc).</p>
+    <p>Every tracked nil tower. Since none of them have a realm or rating yet, they're listed together rather than split into tabs by realm. This tier doesn't get a "position in the Difficulty Chart" breakdown — see the <a href="../tower-of-hell.html#difficulty">Too Hard rule</a> for why.</p>
     <div id="tower-tabs-mount"></div>
   </section>
 
@@ -96,7 +96,7 @@
   </script>
   <script src="../../js/tower-tabs.js"></script>
   <script>
-    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Nil', realmLabel: 'All Nil Towers' });
+    renderTowerTabs('tower-tabs-mount', TOWER_DATA, { tierName: 'Nil', realmLabel: 'All Nil Towers', hideDifficultyChartTab: true });
   </script>
 
 </main>
