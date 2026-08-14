@@ -480,6 +480,10 @@ th {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.02rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
 }
 .tabgroup-head .tag {
   font-family: var(--font-mono);
@@ -492,6 +496,39 @@ th {
   margin-left: 8px;
   vertical-align: middle;
 }
+.tabgroup-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: transform 0.18s ease, color 0.15s ease, background 0.15s ease;
+}
+.tabgroup-toggle:hover {
+  color: var(--accent);
+  background: var(--surface-2);
+}
+.tabgroup-toggle svg {
+  width: 13px;
+  height: 13px;
+  transition: transform 0.18s ease;
+}
+.tabgroup.collapsed .tabgroup-toggle svg {
+  transform: rotate(-90deg);
+}
+.tabgroup-body {
+  display: block;
+}
+.tabgroup.collapsed .tabgroup-body {
+  display: none;
+}
 .tabrow {
   display: flex;
   gap: 2px;
@@ -499,13 +536,23 @@ th {
   padding: 0 10px;
   background: var(--surface-2);
   scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface-2);
 }
 .tabrow::-webkit-scrollbar {
-  height: 5px;
+  height: 7px;
+}
+.tabrow::-webkit-scrollbar-track {
+  background: var(--surface-2);
 }
 .tabrow::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
+  background: var(--accent);
+  border-radius: 999px;
+  opacity: 0.5;
+}
+.tabrow::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 .tabbtn {
   flex-shrink: 0;

@@ -50,6 +50,9 @@ function renderTowerTabs(mountId, data, opts) {
   if (!mount) return;
   const tierName = opts.tierName;
   const realmLabel = opts.realmLabel || "Organized by Realm";
+  const toggleBtnHtml = `<button type="button" class="tabgroup-toggle" aria-label="Show or hide this section" title="Show or hide this section">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>`;
 
   // ---- Group 1: by realm / verification ----
   const realms = [];
@@ -83,20 +86,37 @@ function renderTowerTabs(mountId, data, opts) {
 
   const catGroupHtml = opts.hideDifficultyChartTab ? "" : `
     <div class="tabgroup">
-      <div class="tabgroup-head">Towers in this difficulty <span class="tag">organized by position in the Difficulty Chart</span></div>
-      ${catTabsHtml}
-      ${catPanelsHtml}
+      <div class="tabgroup-head">
+        <span>Towers in this difficulty <span class="tag">organized by position in the Difficulty Chart</span></span>
+        ${toggleBtnHtml}
+      </div>
+      <div class="tabgroup-body">
+        ${catTabsHtml}
+        ${catPanelsHtml}
+      </div>
     </div>
   `;
 
   mount.innerHTML = `
     <div class="tabgroup">
-      <div class="tabgroup-head">Towers in this difficulty <span class="tag">${realmLabel}</span></div>
-      ${realmTabsHtml}
-      ${realmPanelsHtml}
+      <div class="tabgroup-head">
+        <span>Towers in this difficulty <span class="tag">${realmLabel}</span></span>
+        ${toggleBtnHtml}
+      </div>
+      <div class="tabgroup-body">
+        ${realmTabsHtml}
+        ${realmPanelsHtml}
+      </div>
     </div>
     ${catGroupHtml}
   `;
+
+  mount.querySelectorAll(".tabgroup-head").forEach(head => {
+    head.addEventListener("click", (e) => {
+      if (e.target.closest(".tabbtn")) return;
+      head.closest(".tabgroup").classList.toggle("collapsed");
+    });
+  });
 
   mount.querySelectorAll(".tabgroup").forEach(group => {
     group.querySelectorAll(".tabbtn").forEach(btn => {
