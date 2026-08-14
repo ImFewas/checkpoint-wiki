@@ -1,0 +1,431 @@
+/* ==========================================================================
+   CHECKPOINT — a wiki for the games we grind
+   Token system: dark arcade base, per-game accent themes applied via
+   body class (.theme-gd / .theme-toh / .theme-bf). Hub uses base tokens.
+   ========================================================================== */
+
+:root {
+  --bg: #100e17;
+  --surface: #1a1826;
+  --surface-2: #221f30;
+  --border: #322e45;
+  --text: #f1eff7;
+  --text-dim: #948fae;
+
+  --accent: #4ce0d2;
+  --accent-2: #ff5fa2;
+
+  --radius: 10px;
+  --radius-lg: 16px;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Per-game themes */
+body.theme-gd {
+  --accent: #00e5ff;
+  --accent-2: #ff2e92;
+}
+body.theme-toh {
+  --accent: #ff7a45;
+  --accent-2: #ffd23f;
+}
+body.theme-bf {
+  --accent: #2dd4bf;
+  --accent-2: #ffc857;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 45%),
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--accent-2) 10%, transparent), transparent 40%);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Nav ---------- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.brand:hover {
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.brand-mark path {
+  fill: var(--accent);
+}
+
+.site-nav .crumbs {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.site-nav .crumbs a {
+  color: var(--text-dim);
+}
+.site-nav .crumbs a:hover {
+  color: var(--accent);
+}
+
+/* ---------- Hub hero ---------- */
+.hub-hero {
+  padding: 40px 0 30px;
+  text-align: left;
+}
+.hub-hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.hub-hero h1 {
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  max-width: 15ch;
+}
+.hub-hero p {
+  color: var(--text-dim);
+  max-width: 52ch;
+  font-size: 1.05rem;
+}
+
+/* ---------- Cartridge shelf (hub cards) ---------- */
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  padding: 10px 0 60px;
+}
+
+.cart {
+  position: relative;
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.cart:hover {
+  transform: translateY(-3px);
+  border-color: var(--cart-accent, var(--accent));
+  text-decoration: none;
+}
+
+.cart-spine {
+  width: 10px;
+  flex-shrink: 0;
+  background: var(--cart-accent, var(--accent));
+}
+
+.cart-body {
+  padding: 20px 22px;
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cart-accent, var(--accent));
+  margin-bottom: 8px;
+}
+
+.cart h2 {
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.cart p {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.cart[data-accent="gd"] { --cart-accent: #00e5ff; }
+.cart[data-accent="toh"] { --cart-accent: #ff7a45; }
+.cart[data-accent="bf"] { --cart-accent: #2dd4bf; }
+
+.cart.soon {
+  opacity: 0.55;
+  pointer-events: none;
+  border-style: dashed;
+}
+.cart.soon .cart-spine {
+  background: var(--border);
+}
+
+/* ---------- Game page hero ---------- */
+.game-hero {
+  padding: 34px 0 0;
+}
+.game-hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.game-hero h1 {
+  font-size: clamp(2rem, 5vw, 2.9rem);
+  margin-top: 10px;
+}
+.game-hero .dek {
+  color: var(--text-dim);
+  max-width: 60ch;
+  font-size: 1.02rem;
+}
+
+/* Marquee ticker — signature element on game pages */
+.ticker {
+  margin: 26px 0 40px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--surface);
+}
+.ticker-track {
+  display: inline-block;
+  padding: 10px 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  animation: scroll-left 22s linear infinite;
+}
+.ticker-track span {
+  margin: 0 1.4em;
+  color: var(--text-dim);
+}
+.ticker-track span strong {
+  color: var(--accent);
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Quick-nav pills ---------- */
+.pillnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 40px;
+}
+.pillnav a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.pillnav a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ---------- Content sections ---------- */
+.section {
+  padding: 8px 0 40px;
+  border-top: 1px solid var(--border);
+}
+.section:first-of-type {
+  border-top: none;
+}
+.section h2 {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.section h2 .tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 400;
+}
+
+.section ul, .section ol {
+  padding-left: 1.3em;
+}
+.section li {
+  margin-bottom: 0.5em;
+}
+.section li::marker {
+  color: var(--accent);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.info-card h3 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.info-card p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Difficulty / tier chips */
+.tier-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.tier {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.callout {
+  background: var(--surface-2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 14px 18px;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  margin-top: 16px;
+}
+.callout strong {
+  color: var(--text);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  font-size: 0.9rem;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 26px 0 50px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+footer a {
+  color: var(--text-dim);
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
